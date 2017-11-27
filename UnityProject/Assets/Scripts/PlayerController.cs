@@ -38,15 +38,14 @@ public class PlayerController : MonoBehaviour {
 			velocity += transform.right * speed;
 		}
 		if(Input.GetKey(KeyCode.Space)) {
-			velocity += transform.up * jumpForce;
+			if(grounded) {
+				velocity += transform.up * jumpForce;
+			}
 		}
 	}
 
 	void FixedUpdate () {
-		if(grounded) {
-			rb.velocity = Vector3.Lerp(rb.velocity, velocity, acceleration);
-		}
-		rb.velocity = Vector3.Lerp(rb.velocity, velocity, acceleration);
+		rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(velocity.x, rb.velocity.y + velocity.y, velocity.z), acceleration);
 		transform.Rotate(transform.up * Input.GetAxis("Mouse X") * rotSpeed);
 	}
 }

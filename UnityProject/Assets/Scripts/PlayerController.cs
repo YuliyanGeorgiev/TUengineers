@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
 		if(grounded) {
 			rb.velocity = Vector3.Lerp(rb.velocity, velocity, acceleration);
 		}
+		rb.velocity = Vector3.Lerp(rb.velocity, velocity, acceleration);
 		transform.Rotate(transform.up * Input.GetAxis("Mouse X") * rotSpeed);
 	}
 }

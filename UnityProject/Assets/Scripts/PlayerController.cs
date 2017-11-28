@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	void Update () {
-		grounded = Physics.Raycast(transform.position, -transform.up, 1);
+		grounded = Physics.Raycast(transform.position + transform.up, -transform.up, 1f);
 		velocity = Vector3.zero;
 		if(Input.GetKey(KeyCode.W)) {
 			velocity += transform.forward * speed;
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		grounded = Physics.Raycast(transform.position + transform.up, -transform.up, 1f);
 		rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(velocity.x, rb.velocity.y + velocity.y, velocity.z), acceleration);
 		transform.Rotate(transform.up * Input.GetAxis("Mouse X") * rotSpeed);
 	}

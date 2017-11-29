@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour {
 	[SerializeField]
-	Transform target;
+	Transform upperTarget,
+	lowerTarget;
 	[SerializeField]
 	float responsiveness,
-	distance;
-	Vector3 targetpos;
+	distance,
+	mouseSensitivity;
+	Vector3 targetPos;
+	Quaternion targetRot;
+	float interp;
 
 	void Start () {
 		transform.parent = null;
-		targetpos = transform.position - target.transform.position;
+		interp = 0.5f;
 	}
-	
+
+	void Update () {
+		interp -= Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity;
+		interp = Mathf.Clamp(interp, 0, 1);
+	}
 
 	void FixedUpdate () {
-		transform.position = Vector3.Lerp(transform.position, target.transform.position, responsiveness);
-		transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, responsiveness);
+		targetPos = Vector3.Lerp(lowerTarget.position, upperTarget.position, interp);
+		targetRot = Quaternion.Lerp(lowerTarget.rotation, upperTarget.rotation, interp);
+
+		transform.position = Vector3.Lerp(transform.position, targetPos, responsiveness);
+		transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, responsiveness);
 	}
+
 }

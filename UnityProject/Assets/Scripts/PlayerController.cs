@@ -10,20 +10,30 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	Rigidbody rb;
 	[SerializeField]
+	Transform rightHand,
+	leftHand;
+	[SerializeField]
 	float speed,
 	rotSpeed,
 	acceleration,
 	jumpForce;
 	Vector3 velocity;
 	bool grounded;
+	Animator anim;
+	GameObject holdingObject;
+	RaycastHit hit;
+
+	bool carry;
+	bool run;
 
 	void Start () {
 		rb = transform.GetComponent<Rigidbody>();
+		anim = transform.GetComponent<Animator>();
 	}
 
 
 	void Update () {
-		grounded = Physics.Raycast(transform.position + transform.up, -transform.up, 1f);
+		//grounded = Physics.Raycast(transform.position + transform.up, -transform.up, 1f);
 		velocity = Vector3.zero;
 		if(Input.GetKey(KeyCode.W)) {
 			velocity += transform.forward * speed;
@@ -37,11 +47,35 @@ public class PlayerController : MonoBehaviour {
 		if(Input.GetKey(KeyCode.D)) {
 			velocity += transform.right * speed;
 		}
+		if(velocity != Vector3.zero) { 
+			run = true; //play run animation
+		} else {
+			run = false; //stop run animation
+		}
 		if(Input.GetKey(KeyCode.Space)) {
 			if(grounded) {
 				velocity += transform.up * jumpForce;
 			}
 		}
+
+		carry = Input.GetKey(KeyCode.Mouse0); //carry = true if mousebutton is pressed
+
+		anim.SetBool("run", run);
+		anim.SetBool("carry", carry);
+
+		if(carry && holdingObject==null) {
+			if(Physics.Raycast((leftHand.position + rightHand.position)/2-transform.up, transform.forward, out hit, 0.1f)) {
+				if(hit.transform.tag == "Interactive") {
+					holdingObject = hit.transform.gameObject;
+					holdingObject.transform.GetComponent<IInteractiveObject>().Interact(rightHand);
+				}
+			}
+		}
+		if(!carry && holdingObject!=null) {
+			holdingObject.GetComponent<IInteractiveObject>().Release();
+			holdingObject = null;
+		}
+
 	}
 
 	void FixedUpdate () {

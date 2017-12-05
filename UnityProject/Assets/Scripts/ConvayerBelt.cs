@@ -44,7 +44,7 @@ public class ConvayerBelt : MonoBehaviour {
         
         if (turret.transform.position.y < 0.6)
         {
-            Destroy(turret);
+           // Destroy(turret);
         }
     }
 

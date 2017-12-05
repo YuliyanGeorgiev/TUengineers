@@ -138,5 +138,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   main: {fileID: 0}
   terminal: {fileID: 0}
-  bullet: {fileID: 1894211113663462, guid: 8821ebec2755d05458d0eb661336a061, type: 2}
-  bulletSpawn: {fileID: 4656867606287878}

@@ -8,8 +8,6 @@ public class TerminalActivator : MonoBehaviour {
     public GameObject terminal;
     Camera mainCam;
     Camera termCAm;
-    public GameObject bullet;
-    public Transform bulletSpawn;
     private float fireRate;
     private float nextFire;
 
@@ -17,7 +15,6 @@ public class TerminalActivator : MonoBehaviour {
     {
         mainCam = main.GetComponent<Camera>();
         termCAm = terminal.GetComponent<Camera>();
-        fireRate = 0.25f;
     }
 
     private void Update()
@@ -26,11 +23,6 @@ public class TerminalActivator : MonoBehaviour {
         {
             mainCam.enabled = true;
             termCAm.enabled = false;
-        }
-        if (Time.time > nextFire)
-        {
-            nextFire = Time.time + fireRate;
-            Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
         }
     }
 

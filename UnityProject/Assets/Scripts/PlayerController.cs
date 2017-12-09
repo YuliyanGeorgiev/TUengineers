@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour {
 	Animator anim;
 	GameObject holdingObject;
 	RaycastHit hit;
+	[SerializeField]
+	Camera playerCamera;
 
 	bool carry;
 	bool run;
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour {
 			if(Physics.Raycast((leftHand.position + rightHand.position)/2-transform.up, transform.forward, out hit, 0.1f)) {
 				if(hit.transform.tag == "Interactive") {
 					holdingObject = hit.transform.gameObject;
-					holdingObject.transform.GetComponent<IInteractiveObject>().Interact(rightHand);
+					holdingObject.transform.GetComponent<IInteractiveObject>().Interact(this.transform);
 				}
 			}
 		}

@@ -9,21 +9,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
+public class ElevatorTerminal : MonoBehaviour, IInteractiveObject {
 	[SerializeField]
-	InputField userDir1, userDir2, userTime;
+	InputField userInput;
 	Transform playerTransform;
-	float t;
-	float speed1;
-	float speed2;
-	float time;
+	float speed;
 	[SerializeField]
-	Conveyor conveyor;
+	Elevator elevator;
 	bool interacting;
-
-	void Start () {
-		Compile (); // so it compiles the initial settings (words set in editor)
-	}
 
 	void Update () {
 		if(Input.GetKey(KeyCode.Escape) && interacting) { //always possible needs to change?
@@ -31,38 +24,13 @@ public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
 		}
 
 		//----------------------Controller---------------------//
-		if(t > time) {
-			t = 0;
-		}
-		if(t < time/2) {
-			conveyor.SetSpeed(speed1);
-		}
-		if(t > time/2) {
-			conveyor.SetSpeed(speed2);
-		}
-		t+= Time.deltaTime;
+		 
+		elevator.SetSpeed(speed);
 	}
 
 	public void Compile() {
-		//time = userTime.text;
-		if(!float.TryParse(userTime.text, out time)) { //tryparse returns true if input is a number and changes the time variable
-			//Doesn't compile!
-		}
-
-		if(userDir1.text.Equals("Left")) {
-			speed1 = -1;
-		} else if(userDir1.text.Equals("Right")) {
-			speed1 = 1;
-		} else {
-			//Doesn't compile!
-		}
-
-		if(userDir2.text.Equals("Left")) {
-			speed2 = -1;
-		} else if(userDir2.text.Equals("Right")) {
-			speed2 = 1;
-		} else {
-			//Doesn't compile!
+		if(!float.TryParse(userInput.text, out speed)) { //tryparse returns true if input is a number and changes the time variable
+			Debug.Log("Compile Error");
 		}
 	}
 

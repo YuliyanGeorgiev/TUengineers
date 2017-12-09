@@ -1,40 +1,25 @@
-﻿using System.Collections;
+﻿/* Elevator.cs
+ * D.J.C.P. Hiemstra
+ * Based on Elevator.cs by Yuliyan Georgiev
+ * 9-12-17
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Elevator : MonoBehaviour {
+	float speed;
+	[SerializeField]
+	Rigidbody rb;
 
-
-    public InputField userDirection;
-    public float speed = 1;
-    public string direction;
-    private int level1 = 5;
-    private int levelGr = 0;
-
-
-    // Use this for initialization
-    void Start()
-    {
-        direction = "up";
+    void FixedUpdate() {
+		//rb.MovePosition(rb.transform.position + rb.transform.up * -speed * 10000);
+		rb.velocity = rb.transform.forward * speed;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (direction == "up" && transform.position.y <= level1)
-        {
-            transform.Translate(0, 0, speed * Time.deltaTime);
-        }
-        else if (direction == "down" && transform.position.y >= levelGr)
-        {
-            transform.Translate(0, 0, -speed * Time.deltaTime);
-        }
-    }
-
-    public void setDirection()
-    {
-        direction = userDirection.text;
+    public void SetSpeed(float newSpeed) {
+		speed = newSpeed;
     }
 }

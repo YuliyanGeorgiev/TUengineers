@@ -35,9 +35,8 @@ public class Turret : MonoBehaviour {
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             Vector3 rotation = lookRotation.eulerAngles;
             mid.rotation = Quaternion.Euler(-90f, rotation.y, 0f);
-            top.rotation = Quaternion.Euler(rotation.x, 0f, 0f);
+            //top.rotation = Quaternion.Euler(rotation.x, 0f, 0f);
 
-            top.LookAt(target.position);
             nextFire = Time.time + fireRate; // Set time for the fire rate
             Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             targetDistance = hit.distance;

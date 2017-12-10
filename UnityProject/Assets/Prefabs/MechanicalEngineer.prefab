@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 114739392242759748}
   m_Layer: 0
   m_Name: MechanicalEngineer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1594,7 +1594,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378456030925906}
-  m_LocalRotation: {x: 0.34933022, y: 0.35384828, z: 0.5557343, w: 0.6662726}
+  m_LocalRotation: {x: 0.34933025, y: 0.3538483, z: 0.55573434, w: 0.66627264}
   m_LocalPosition: {x: -0.06613916, y: -0.000000014784746, z: -0.000000012440978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

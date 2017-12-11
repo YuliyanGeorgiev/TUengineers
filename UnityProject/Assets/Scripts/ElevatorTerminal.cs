@@ -17,6 +17,7 @@ public class ElevatorTerminal : MonoBehaviour, IInteractiveObject {
 	[SerializeField]
 	Elevator elevator;
 	bool interacting;
+    public Text compileResult;
 
 	void Update () {
 		if(Input.GetKey(KeyCode.Escape) && interacting) { //always possible needs to change?
@@ -31,6 +32,7 @@ public class ElevatorTerminal : MonoBehaviour, IInteractiveObject {
 	public void Compile() {
 		if(!float.TryParse(userInput.text, out speed)) { //tryparse returns true if input is a number and changes the time variable
 			Debug.Log("Compile Error");
+            SetFail();
 		}
 	}
 
@@ -48,4 +50,16 @@ public class ElevatorTerminal : MonoBehaviour, IInteractiveObject {
 		this.transform.GetChild(0).gameObject.SetActive(false); // disable terminal camera and input field
 		interacting = false;
 	}
+
+    private void SetSuccess()
+    {
+        compileResult.text = "SUCCESS";
+        compileResult.color = Color.green;
+    }
+
+    private void SetFail()
+    {
+        compileResult.text = "ERROR";
+        compileResult.color = Color.red;
+    }
 }

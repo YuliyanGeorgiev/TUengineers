@@ -20,9 +20,10 @@ public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
 	[SerializeField]
 	Conveyor conveyor;
 	bool interacting;
+    public Text compileResult;
 
 	void Start () {
-		Compile (); // so it compiles the initial settings (words set in editor)
+        Compile(); // so it compiles the initial settings (words set in editor)
 	}
 
 	void Update () {
@@ -44,26 +45,35 @@ public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
 	}
 
 	public void Compile() {
-		//time = userTime.text;
-		if(!float.TryParse(userTime.text, out time)) { //tryparse returns true if input is a number and changes the time variable
-			//Doesn't compile!
-		}
+        string CheckTime = userTime.text;
+        Debug.Log(CheckTime.Remove(CheckTime.Length - 1));
+        Debug.Log(CheckTime[CheckTime.Length - 1]);
+        //time = userTime.text;
+        if (CheckTime[CheckTime.Length-1].Equals(";") && !float.TryParse(CheckTime.Remove(CheckTime.Length-1), out time)) { //tryparse returns true if input is a number and changes the time variable
+            Debug.Log(CheckTime);
+            SetFail();
+        }
 
-		if(userDir1.text.Equals("Left")) {
+		if(userDir1.text.Equals("Left);")) {
 			speed1 = -1;
-		} else if(userDir1.text.Equals("Right")) {
-			speed1 = 1;
-		} else {
-			//Doesn't compile!
-		}
+            SetSuccess();
 
-		if(userDir2.text.Equals("Left")) {
+        } else if(userDir1.text.Equals("Right);")) {
+			speed1 = 1;
+            SetSuccess();
+        } else {
+            SetFail();
+        }
+
+		if(userDir2.text.Equals("Left);")) {
 			speed2 = -1;
-		} else if(userDir2.text.Equals("Right")) {
+            SetSuccess();
+        } else if(userDir2.text.Equals("Right);")) {
 			speed2 = 1;
-		} else {
-			//Doesn't compile!
-		}
+            SetSuccess();
+        } else {
+            SetFail();
+        }
 	}
 
 	public void Interact(Transform player) {
@@ -80,4 +90,16 @@ public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
 		this.transform.GetChild(0).gameObject.SetActive(false); // disable terminal camera and input field
 		interacting = false;
 	}
+
+    private void SetSuccess()
+    {
+        compileResult.text = "SUCCESS";
+        compileResult.color = Color.green;
+    }
+
+    private void SetFail()
+    {
+        compileResult.text = "ERROR";
+        compileResult.color = Color.red;
+    }
 }

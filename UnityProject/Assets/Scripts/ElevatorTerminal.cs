@@ -30,10 +30,14 @@ public class ElevatorTerminal : MonoBehaviour, IInteractiveObject {
 	}
 
 	public void Compile() {
-		if(!float.TryParse(userInput.text, out speed)) { //tryparse returns true if input is a number and changes the time variable
-			Debug.Log("Compile Error");
+        string CheckTime = userInput.text;
+        char lastL = CheckTime[CheckTime.Length - 1];
+        if (!(lastL.ToString() == ";" && float.TryParse(CheckTime.Remove(CheckTime.Length - 1), out speed)))
+        { //tryparse returns true if input is a number and changes the time variable
+            Debug.Log("Compile Error");
             SetFail();
-		}
+        }
+        else SetSuccess();
 	}
 
 	public void Interact(Transform player) {

@@ -45,35 +45,14 @@ public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
 	}
 
 	public void Compile() {
-        string CheckTime = userTime.text;
-        Debug.Log(CheckTime.Remove(CheckTime.Length - 1));
-        Debug.Log(CheckTime[CheckTime.Length - 1]);
-        //time = userTime.text;
-        if (CheckTime[CheckTime.Length-1].Equals(";") && !float.TryParse(CheckTime.Remove(CheckTime.Length-1), out time)) { //tryparse returns true if input is a number and changes the time variable
-            Debug.Log(CheckTime);
-            SetFail();
-        }
 
-		if(userDir1.text.Equals("Left);")) {
-			speed1 = -1;
+        if (CheckInput())
+        {
             SetSuccess();
-
-        } else if(userDir1.text.Equals("Right);")) {
-			speed1 = 1;
-            SetSuccess();
-        } else {
-            SetFail();
+            SetValues();
         }
-
-		if(userDir2.text.Equals("Left);")) {
-			speed2 = -1;
-            SetSuccess();
-        } else if(userDir2.text.Equals("Right);")) {
-			speed2 = 1;
-            SetSuccess();
-        } else {
-            SetFail();
-        }
+        else SetFail();
+        
 	}
 
 	public void Interact(Transform player) {
@@ -102,4 +81,58 @@ public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
         compileResult.text = "ERROR";
         compileResult.color = Color.red;
     }
+
+    private bool CheckUsrTime()
+    {
+        string CheckTime = userTime.text;
+        char lastL = CheckTime[CheckTime.Length - 1];
+        Debug.Log(CheckTime.Remove(CheckTime.Length - 1));
+        Debug.Log(CheckTime[CheckTime.Length - 1]);
+        return (lastL.ToString() == ";" && float.TryParse(CheckTime.Remove(CheckTime.Length - 1), out time));
+    }
+
+    private bool CheckInput()
+    {
+        return (CheckDir1() && CheckDir2() && CheckInputTime());
+    }
+
+    private bool CheckDir1()
+    {
+        return (userDir1.text.Equals("Right);") || userDir1.text.Equals("Left);"));
+    }
+
+    private bool CheckDir2()
+    {
+        return (userDir2.text.Equals("Right);") || userDir2.text.Equals("Left);"));
+    }
+
+    private bool CheckInputTime()
+    {
+        string CheckTime = userTime.text;
+        char lastL = CheckTime[CheckTime.Length - 1];
+        return (lastL.ToString() == ";" && float.TryParse(CheckTime.Remove(CheckTime.Length - 1), out time));
+    }
+
+    private void SetValues()
+    {
+        if (userDir1.text.Equals("Left);"))
+        {
+            speed1 = -1;
+
+        }
+        else if (userDir1.text.Equals("Right);"))
+        {
+            speed1 = 1;
+        }
+
+        if (userDir2.text.Equals("Left);"))
+        {
+            speed2 = -1;
+        }
+        else if (userDir2.text.Equals("Right);"))
+        {
+            speed2 = 1;
+        }
+    }
+
 }

@@ -5,6 +5,7 @@
  * 10.12.2017
  * Turret behaviour script
  */
+
 public class Turret : MonoBehaviour {
 
 	public float rotSpeed;
@@ -26,9 +27,11 @@ public class Turret : MonoBehaviour {
 	float stopSearchTime;
 	public Light muzzleFlash;
 	float muzzleFlashTime;
+    public int health;
 
 	Vector3 direction;
 	void Start () {
+        health = 100;
         line = GetComponent<LineRenderer>();
 	}
 	
@@ -82,5 +85,19 @@ public class Turret : MonoBehaviour {
     bool IsTarget(RaycastHit hit) // Is this still needed?
     {
         return (hit.transform.tag == "Turret" || hit.transform.tag == "Player");
+    }
+
+    public void TakeDamage()
+    {
+        if (health != 0)
+        {
+            health -= 10;
+            top.transform.Rotate(0f, 0f, top.rotation.z - 3);
+        }
+        else if (health == 0)
+        {
+            laser.enabled = false;
+            GetComponent<Turret>().enabled = false;
+        }
     }
 }

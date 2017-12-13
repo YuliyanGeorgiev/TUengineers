@@ -3114,6 +3114,7 @@ GameObject:
   - component: {fileID: 783599033}
   - component: {fileID: 783599032}
   - component: {fileID: 783599030}
+  - component: {fileID: 783599031}
   m_Layer: 0
   m_Name: ElevatorTerminal
   m_TagString: Interactive
@@ -3135,6 +3136,38 @@ MonoBehaviour:
   userInput: {fileID: 921916136}
   elevator: {fileID: 1168385642}
   compileResult: {fileID: 957620737}
+--- !u!114 &783599031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 783599029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 122
+    i1: 202
+    i2: 42
+    i3: 86
+    i4: 5
+    i5: 34
+    i6: 4
+    i7: 148
+    i8: 233
+    i9: 247
+    i10: 17
+    i11: 211
+    i12: 128
+    i13: 114
+    i14: 16
+    i15: 27
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!65 &783599032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5038,7 +5071,7 @@ Prefab:
     - target: {fileID: 114489197334192600, guid: 8be1b9d45fbd74b4f8f3535b00b2180b,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Compile
+      value: NetworkCompile
       objectReference: {fileID: 0}
     - target: {fileID: 114489197334192600, guid: 8be1b9d45fbd74b4f8f3535b00b2180b,
         type: 2}
@@ -5518,7 +5551,7 @@ Prefab:
     - target: {fileID: 114489197334192600, guid: 8be1b9d45fbd74b4f8f3535b00b2180b,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Compile
+      value: NetworkCompile
       objectReference: {fileID: 0}
     - target: {fileID: 114489197334192600, guid: 8be1b9d45fbd74b4f8f3535b00b2180b,
         type: 2}
@@ -6131,6 +6164,7 @@ GameObject:
   - component: {fileID: 1447981666}
   - component: {fileID: 1447981669}
   - component: {fileID: 1447981670}
+  - component: {fileID: 1447981668}
   m_Layer: 0
   m_Name: ConveyorTerminal
   m_TagString: Interactive
@@ -6171,6 +6205,38 @@ Transform:
   m_Father: {fileID: 741150473}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1447981668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1447981665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 122
+    i1: 202
+    i2: 42
+    i3: 86
+    i4: 5
+    i5: 34
+    i6: 4
+    i7: 148
+    i8: 233
+    i9: 247
+    i10: 17
+    i11: 211
+    i12: 128
+    i13: 114
+    i14: 16
+    i15: 27
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!65 &1447981669
 BoxCollider:
   m_ObjectHideFlags: 0

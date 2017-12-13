@@ -8,8 +8,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class ElevatorTerminal : MonoBehaviour, IInteractiveObject {
+public class ElevatorTerminal : NetworkBehaviour, IInteractiveObject {
 	[SerializeField]
 	InputField userInput;
 	Transform playerTransform;
@@ -17,7 +18,7 @@ public class ElevatorTerminal : MonoBehaviour, IInteractiveObject {
 	[SerializeField]
 	Elevator elevator;
 	bool interacting;
-    public Text compileResult;
+	public Text compileResult;
 
 	void Update () {
 		if(Input.GetKey(KeyCode.Escape) && interacting) { //always possible needs to change?
@@ -25,19 +26,42 @@ public class ElevatorTerminal : MonoBehaviour, IInteractiveObject {
 		}
 
 		//----------------------Controller---------------------//
-		 
+
 		elevator.SetSpeed(speed);
 	}
 
 	public void Compile() {
-        string CheckTime = userInput.text;
-        char lastL = CheckTime[CheckTime.Length - 1];
-        if (!(lastL.ToString() == ";" && float.TryParse(CheckTime.Remove(CheckTime.Length - 1), out speed)))
-        { //tryparse returns true if input is a number and changes the time variable
-            Debug.Log("Compile Error");
-            SetFail();
-        }
-        else SetSuccess();
+		string CheckTime = userInput.text;
+		char lastL = CheckTime[CheckTime.Length - 1];
+		if (!(lastL.ToString() == ";" && float.TryParse(CheckTime.Remove(CheckTime.Length - 1), out speed)))
+		{ //tryparse returns true if input is a number and changes the time variable
+			Debug.Log("Compile Error");
+			SetFail();
+		}
+		else SetSuccess();
+	}
+
+	public void NetworkCompile() {
+		if(Network.isServer) {
+			RpcCompile(userInput.text);
+		} else {
+			CmdCompile(userInput.text);
+		}
+	}
+
+	[Command]
+	public void CmdCompile(string input) {
+		userInput.text = input;
+		//Compile();
+		Debug.Log("RPC Test Server");
+		RpcCompile(input);
+	}
+
+	[ClientRpc]
+	public void RpcCompile(string input) {
+		userInput.text = input;
+		Debug.Log("RPC Test Client");
+		Compile();
 	}
 
 	public void Interact(Transform player) {
@@ -55,15 +79,15 @@ public class ElevatorTerminal : MonoBehaviour, IInteractiveObject {
 		interacting = false;
 	}
 
-    private void SetSuccess()
-    {
-        compileResult.text = "SUCCESS";
-        compileResult.color = Color.green;
-    }
+	private void SetSuccess()
+	{
+		compileResult.text = "SUCCESS";
+		compileResult.color = Color.green;
+	}
 
-    private void SetFail()
-    {
-        compileResult.text = "ERROR";
-        compileResult.color = Color.red;
-    }
+	private void SetFail()
+	{
+		compileResult.text = "ERROR";
+		compileResult.color = Color.red;
+	}
 }

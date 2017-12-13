@@ -8,8 +8,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
+public class ConveyorTerminal : NetworkBehaviour, IInteractiveObject {
 	[SerializeField]
 	InputField userDir1, userDir2, userTime;
 	Transform playerTransform;
@@ -20,10 +21,10 @@ public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
 	[SerializeField]
 	Conveyor conveyor;
 	bool interacting;
-    public Text compileResult;
+	public Text compileResult;
 
 	void Start () {
-        Compile(); // so it compiles the initial settings (words set in editor)
+		Compile(); // so it compiles the initial settings (words set in editor)
 	}
 
 	void Update () {
@@ -46,13 +47,41 @@ public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
 
 	public void Compile() {
 
-        if (CheckInput())
-        {
-            SetSuccess();
-            SetValues();
-        }
-        else SetFail();
-        
+		if (CheckInput())
+		{
+			SetSuccess();
+			SetValues();
+		}
+		else SetFail();
+
+	}
+
+	public void NetworkCompile() {
+		if(Network.isServer) {
+			RpcCompile(userDir1.text, userDir2.text, userTime.text);
+		} else {
+			CmdCompile(userDir1.text, userDir2.text, userTime.text);
+			Debug.Log("ich bin client");
+		}
+	}
+
+	[Command]
+	public void CmdCompile(string input1, string input2, string input3) {
+		userDir1.text = input1;
+		userDir2.text = input2;
+		userTime.text = input3;
+		//Compile();
+		Debug.Log("RPC Test Server");
+		RpcCompile(input1, input2, input3);
+	}
+
+	[ClientRpc]
+	public void RpcCompile(string input1, string input2, string input3) {
+		userDir1.text = input1;
+		userDir2.text = input2;
+		userTime.text = input3;
+		Debug.Log("RPC Test Client");
+		Compile();
 	}
 
 	public void Interact(Transform player) {
@@ -70,69 +99,69 @@ public class ConveyorTerminal : MonoBehaviour, IInteractiveObject {
 		interacting = false;
 	}
 
-    private void SetSuccess()
-    {
-        compileResult.text = "SUCCESS";
-        compileResult.color = Color.green;
-    }
+	private void SetSuccess()
+	{
+		compileResult.text = "SUCCESS";
+		compileResult.color = Color.green;
+	}
 
-    private void SetFail()
-    {
-        compileResult.text = "ERROR";
-        compileResult.color = Color.red;
-    }
+	private void SetFail()
+	{
+		compileResult.text = "ERROR";
+		compileResult.color = Color.red;
+	}
 
-    private bool CheckUsrTime()
-    {
-        string CheckTime = userTime.text;
-        char lastL = CheckTime[CheckTime.Length - 1];
-        Debug.Log(CheckTime.Remove(CheckTime.Length - 1));
-        Debug.Log(CheckTime[CheckTime.Length - 1]);
-        return (lastL.ToString() == ";" && float.TryParse(CheckTime.Remove(CheckTime.Length - 1), out time));
-    }
+	private bool CheckUsrTime()
+	{
+		string CheckTime = userTime.text;
+		char lastL = CheckTime[CheckTime.Length - 1];
+		Debug.Log(CheckTime.Remove(CheckTime.Length - 1));
+		Debug.Log(CheckTime[CheckTime.Length - 1]);
+		return (lastL.ToString() == ";" && float.TryParse(CheckTime.Remove(CheckTime.Length - 1), out time));
+	}
 
-    private bool CheckInput()
-    {
-        return (CheckDir1() && CheckDir2() && CheckInputTime());
-    }
+	private bool CheckInput()
+	{
+		return (CheckDir1() && CheckDir2() && CheckInputTime());
+	}
 
-    private bool CheckDir1()
-    {
-        return (userDir1.text.Equals("Right);") || userDir1.text.Equals("Left);"));
-    }
+	private bool CheckDir1()
+	{
+		return (userDir1.text.Equals("Right);") || userDir1.text.Equals("Left);"));
+	}
 
-    private bool CheckDir2()
-    {
-        return (userDir2.text.Equals("Right);") || userDir2.text.Equals("Left);"));
-    }
+	private bool CheckDir2()
+	{
+		return (userDir2.text.Equals("Right);") || userDir2.text.Equals("Left);"));
+	}
 
-    private bool CheckInputTime()
-    {
-        string CheckTime = userTime.text;
-        char lastL = CheckTime[CheckTime.Length - 1];
-        return (lastL.ToString() == ";" && float.TryParse(CheckTime.Remove(CheckTime.Length - 1), out time));
-    }
+	private bool CheckInputTime()
+	{
+		string CheckTime = userTime.text;
+		char lastL = CheckTime[CheckTime.Length - 1];
+		return (lastL.ToString() == ";" && float.TryParse(CheckTime.Remove(CheckTime.Length - 1), out time));
+	}
 
-    private void SetValues()
-    {
-        if (userDir1.text.Equals("Left);"))
-        {
-            speed1 = -1;
+	private void SetValues()
+	{
+		if (userDir1.text.Equals("Left);"))
+		{
+			speed1 = -1;
 
-        }
-        else if (userDir1.text.Equals("Right);"))
-        {
-            speed1 = 1;
-        }
+		}
+		else if (userDir1.text.Equals("Right);"))
+		{
+			speed1 = 1;
+		}
 
-        if (userDir2.text.Equals("Left);"))
-        {
-            speed2 = -1;
-        }
-        else if (userDir2.text.Equals("Right);"))
-        {
-            speed2 = 1;
-        }
-    }
+		if (userDir2.text.Equals("Left);"))
+		{
+			speed2 = -1;
+		}
+		else if (userDir2.text.Equals("Right);"))
+		{
+			speed2 = 1;
+		}
+	}
 
 }

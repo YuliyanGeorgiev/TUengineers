@@ -1,5 +1,6 @@
 ﻿/* PlayerController.cs
  * D.J.C.P. Hiemstra
+ * Y. Georgiev
  * 21-11-17
 */
 
@@ -21,14 +22,19 @@ public class PlayerController : MonoBehaviour {
 	bool grounded;
 	Animator anim;
 	GameObject holdingObject;
+    private GameObject spawnPoint;
 	RaycastHit hit;
 	[SerializeField]
 	Camera playerCamera;
-
+    public int health;
 	bool carry;
 	bool run;
+    private PlayerActivator respawn;
 
 	void Start () {
+        health = 80;
+        spawnPoint = GameObject.Find("SpawnPoint");
+        respawn = GetComponent<PlayerActivator>();
 		rb = transform.GetComponent<Rigidbody>();
 		anim = transform.GetComponent<Animator>();
 	}
@@ -85,4 +91,15 @@ public class PlayerController : MonoBehaviour {
 		rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(velocity.x, rb.velocity.y + velocity.y, velocity.z), acceleration);
 		transform.Rotate(transform.up * Input.GetAxis("Mouse X") * rotSpeed);
 	}
+
+    public void TakeDamage()
+    {
+        Debug.Log("hit");
+        health -= 10;
+        if (health == 0)
+        {
+            health = 80;
+            transform.position = spawnPoint.transform.position;
+        }
+    }
 }

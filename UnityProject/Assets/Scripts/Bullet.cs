@@ -9,9 +9,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
+
 	[SerializeField]
 	float destroyAfterThisTime;
 	public float speed;
+    private Turret turretScript;
+    private PlayerController playerScript;
 
 	private void Start() {
 		GetComponent<Rigidbody>().velocity = transform.forward * speed;
@@ -25,4 +28,20 @@ public class Bullet : MonoBehaviour {
 	void DestroyBullet() {
 		Destroy(gameObject);
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Turret")
+        {
+            turretScript = other.GetComponent<Turret>();
+            DestroyBullet();
+            turretScript.TakeDamage();
+        }
+        else if(other.tag == "Player")
+        {
+            playerScript = other.GetComponent<PlayerController>();
+            DestroyBullet();
+            playerScript.TakeDamage();
+        }
+    }
 }

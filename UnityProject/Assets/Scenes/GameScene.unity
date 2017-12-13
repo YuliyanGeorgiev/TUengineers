@@ -1867,7 +1867,11 @@ Transform:
   - {fileID: 1180585166}
   - {fileID: 380313761}
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 5
+=======
+  m_RootOrder: 3
+>>>>>>> 368bb80e957229b32da3938b53ff412c05d803a8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &921916136 stripped
 MonoBehaviour:
@@ -2529,6 +2533,7 @@ MonoBehaviour:
   laser: {fileID: 1638125053}
   searchTime: 0.5
   muzzleFlash: {fileID: 79924045}
+  health: 0
 --- !u!65 &1042360526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4314,7 +4319,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 10dccfe1d14a8274bb3166e7873df499, type: 3}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 4
+=======
+      value: 2
+>>>>>>> 368bb80e957229b32da3938b53ff412c05d803a8
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 10dccfe1d14a8274bb3166e7873df499, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -5690,6 +5699,7 @@ MonoBehaviour:
   laser: {fileID: 688698537}
   searchTime: 0.5
   muzzleFlash: {fileID: 1221645136}
+  health: 0
 --- !u!65 &2146272824
 BoxCollider:
   m_ObjectHideFlags: 0

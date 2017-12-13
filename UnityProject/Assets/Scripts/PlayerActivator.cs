@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class PlayerActivator : NetworkBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
 		if(isLocalPlayer) {
 			transform.GetComponent<PlayerController>().enabled = true;
 			transform.GetChild(0).gameObject.SetActive(true);
@@ -17,4 +17,5 @@ public class PlayerActivator : NetworkBehaviour {
 	void Update () {
 		
 	}
+
 }

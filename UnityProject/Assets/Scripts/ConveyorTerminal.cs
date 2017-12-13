@@ -67,12 +67,9 @@ public class ConveyorTerminal : NetworkBehaviour, IInteractiveObject {
 
 	[Command]
 	public void CmdCompile(string input1, string input2, string input3) {
-		userDir1.text = input1;
-		userDir2.text = input2;
-		userTime.text = input3;
 		//Compile();
 		Debug.Log("RPC Test Server");
-		RpcCompile(input1, input2, input3);
+		RpcCompile(userDir1.text, userDir2.text, userTime.text);
 	}
 
 	[ClientRpc]

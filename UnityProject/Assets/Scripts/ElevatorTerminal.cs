@@ -51,10 +51,8 @@ public class ElevatorTerminal : NetworkBehaviour, IInteractiveObject {
 
 	[Command]
 	public void CmdCompile(string input) {
-		userInput.text = input;
-		//Compile();
 		Debug.Log("RPC Test Server");
-		RpcCompile(input);
+		RpcCompile(userInput.text);
 	}
 
 	[ClientRpc]

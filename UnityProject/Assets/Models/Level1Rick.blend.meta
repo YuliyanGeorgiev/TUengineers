@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 32ea6b244887c4c4184375c98fd2c7d1
-timeCreated: 1511786906
+guid: 5a9c4b95a535faf4fa84bafd9ac30dfd
+timeCreated: 1513370324
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,23 +13,20 @@ ModelImporter:
     100010: Cable_005
     100012: Cable_006
     100014: Cable_007
-    100016: Door
-    100018: DoorController
-    100020: Floor
-    100022: Icosphere
-    100024: Icosphere_001
-    100026: //RootNode
-    100028: Walls
-    100030: Cable_008
-    100032: Cable_009
-    100034: Cable_010
-    100036: Cable_011
-    100038: Cable_012
-    100040: Cable_013
-    100042: Cable_014
-    100044: DoorController_001
-    100046: Icosphere_002
-    100048: Icosphere_003
+    100016: Cable_008
+    100018: Cable_009
+    100020: Cable_010
+    100022: Cable_011
+    100024: Cable_012
+    100026: Cable_013
+    100028: Cable_014
+    100030: Door
+    100032: DoorController
+    100034: Floor
+    100036: Icosphere
+    100038: Icosphere_001
+    100040: //RootNode
+    100042: Walls
     400000: Cable
     400002: Cable_001
     400004: Cable_002
@@ -38,23 +35,20 @@ ModelImporter:
     400010: Cable_005
     400012: Cable_006
     400014: Cable_007
-    400016: Door
-    400018: DoorController
-    400020: Floor
-    400022: Icosphere
-    400024: Icosphere_001
-    400026: //RootNode
-    400028: Walls
-    400030: Cable_008
-    400032: Cable_009
-    400034: Cable_010
-    400036: Cable_011
-    400038: Cable_012
-    400040: Cable_013
-    400042: Cable_014
-    400044: DoorController_001
-    400046: Icosphere_002
-    400048: Icosphere_003
+    400016: Cable_008
+    400018: Cable_009
+    400020: Cable_010
+    400022: Cable_011
+    400024: Cable_012
+    400026: Cable_013
+    400028: Cable_014
+    400030: Door
+    400032: DoorController
+    400034: Floor
+    400036: Icosphere
+    400038: Icosphere_001
+    400040: //RootNode
+    400042: Walls
     2300000: Cable
     2300002: Cable_001
     2300004: Cable_002
@@ -63,22 +57,19 @@ ModelImporter:
     2300010: Cable_005
     2300012: Cable_006
     2300014: Cable_007
-    2300016: Door
-    2300018: DoorController
-    2300020: Floor
-    2300022: Icosphere
-    2300024: Icosphere_001
-    2300026: Walls
-    2300028: Cable_008
-    2300030: Cable_009
-    2300032: Cable_010
-    2300034: Cable_011
-    2300036: Cable_012
-    2300038: Cable_013
-    2300040: Cable_014
-    2300042: DoorController_001
-    2300044: Icosphere_002
-    2300046: Icosphere_003
+    2300016: Cable_008
+    2300018: Cable_009
+    2300020: Cable_010
+    2300022: Cable_011
+    2300024: Cable_012
+    2300026: Cable_013
+    2300028: Cable_014
+    2300030: Door
+    2300032: DoorController
+    2300034: Floor
+    2300036: Icosphere
+    2300038: Icosphere_001
+    2300040: Walls
     3300000: Cable
     3300002: Cable_001
     3300004: Cable_002
@@ -87,22 +78,19 @@ ModelImporter:
     3300010: Cable_005
     3300012: Cable_006
     3300014: Cable_007
-    3300016: Door
-    3300018: DoorController
-    3300020: Floor
-    3300022: Icosphere
-    3300024: Icosphere_001
-    3300026: Walls
-    3300028: Cable_008
-    3300030: Cable_009
-    3300032: Cable_010
-    3300034: Cable_011
-    3300036: Cable_012
-    3300038: Cable_013
-    3300040: Cable_014
-    3300042: DoorController_001
-    3300044: Icosphere_002
-    3300046: Icosphere_003
+    3300016: Cable_008
+    3300018: Cable_009
+    3300020: Cable_010
+    3300022: Cable_011
+    3300024: Cable_012
+    3300026: Cable_013
+    3300028: Cable_014
+    3300030: Door
+    3300032: DoorController
+    3300034: Floor
+    3300036: Icosphere
+    3300038: Icosphere_001
+    3300040: Walls
     4300000: Door
     4300002: Icosphere_001
     4300004: Icosphere
@@ -124,9 +112,6 @@ ModelImporter:
     4300036: Cable_012
     4300038: Cable_013
     4300040: Cable_014
-    4300042: DoorController_001
-    4300044: Icosphere_002
-    4300046: Icosphere_003
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -150,26 +135,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material_003
     second: {fileID: 2100000, guid: c02688829b79a2b438a564ec21230c0a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_004
-    second: {fileID: 2100000, guid: 1dde4a1479e44d742a5a7def3ef406ad, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_005
-    second: {fileID: 2100000, guid: 3f8717f8655aa2c49bcec7f7802836d5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_006
-    second: {fileID: 2100000, guid: 3b1a4e8d725765f4fac544e64986e5d2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_007
-    second: {fileID: 2100000, guid: e40456a550f189b47954e24f67104b21, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

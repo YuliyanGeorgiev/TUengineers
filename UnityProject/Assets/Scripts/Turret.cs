@@ -12,8 +12,8 @@ public class Turret : MonoBehaviour {
     public int range = 15;
     //public float targetDistance;
     private LineRenderer line;
-	public GameObject mid;
-	public GameObject top;
+    public Transform mid;
+    public Transform top;
 	public Transform laserOrigin;
     public GameObject bulletSpawn;
     public GameObject bullet;
@@ -29,8 +29,7 @@ public class Turret : MonoBehaviour {
 	float muzzleFlashTime;
     public int health;
 
-	Vector3 midDirection;
-	Vector3 topDirection;
+	Vector3 direction;
 	void Start () {
         health = 100;
         line = GetComponent<LineRenderer>();
@@ -40,24 +39,20 @@ public class Turret : MonoBehaviour {
         RaycastHit hit;
         //Vector3 forward = transform.TransformDirection(Vector3.forward) * range;
 		if(target != null) { // so the turret rotates to the target before it checks if it can still see it. Improves tracking.
-			midDirection = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z);
-			topDirection = new Vector3(target.transform.position.x - mid.transform.position.x , target.transform.position.y - laserOrigin.position.y, target.transform.position.z - mid.transform.position.z);
+			direction = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z);
 		} else if(Time.time > stopSearchTime) {
 			if(rotSpeed == 0) {
-				midDirection = Quaternion.Euler(0,Time.deltaTime*100,0) * transform.forward;
-				topDirection = midDirection;
+				direction = Quaternion.Euler(0,Time.deltaTime*100,0) * transform.forward;
 			} else {
-				midDirection = Quaternion.Euler(0,Time.deltaTime*rotSpeed,0) * mid.transform.forward;
-				topDirection = midDirection;
+				direction = Quaternion.Euler(0,Time.deltaTime*rotSpeed,0) * laserOrigin.forward;
 			}
 		}
 
 
 
 
-		lookRotation = Quaternion.LookRotation(midDirection);
-		mid.transform.rotation = lookRotation;
-		top.transform.rotation = Quaternion.LookRotation(topDirection);
+		lookRotation = Quaternion.LookRotation(direction);
+		mid.rotation = lookRotation;
 
 		if (Physics.Raycast(laserOrigin.position, laserOrigin.forward, out hit, range)) {
 			if(IsTarget(hit)) {
@@ -97,7 +92,7 @@ public class Turret : MonoBehaviour {
         if (health != 0)
         {
             health -= 10;
-			top.transform.Rotate(0f, 0f, top.transform.rotation.z - 3);
+            top.transform.Rotate(0f, 0f, top.rotation.z - 3);
         }
         else if (health == 0)
         {

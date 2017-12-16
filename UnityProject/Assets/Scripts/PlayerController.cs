@@ -60,10 +60,9 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			run = false; //stop run animation
 		}
-		if(Input.GetKey(KeyCode.Space)) {
-			if(grounded) {
-				velocity += transform.up * jumpForce;
-			}
+		if(Input.GetKey(KeyCode.Space) && grounded == true) {
+				velocity += transform.up * jumpForce * 0.5f;
+				grounded = false; 
 		}
 
 		carry = Input.GetKey(KeyCode.Mouse0); //carry = true if mousebutton is pressed

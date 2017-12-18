@@ -2237,7 +2237,7 @@ BoxCollider:
   m_GameObject: {fileID: 449862709}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 10.000008, y: 0.000000953675, z: 10.000013}
   m_Center: {x: -0.00004196167, y: -0.00000047683716, z: 0.000054121017}
@@ -4294,14 +4294,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &943387580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 943387579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 227461547, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
@@ -5462,7 +5462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896e5ad5b6506d748984cb39995a61dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1135150924}
+  lowerheight: 0
+  upperheight: 0
 --- !u!1 &1152689290
 GameObject:
   m_ObjectHideFlags: 0
@@ -5642,7 +5643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896e5ad5b6506d748984cb39995a61dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1836116029}
+  lowerheight: 0.1
+  upperheight: 9
 --- !u!4 &1168385644 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 10dccfe1d14a8274bb3166e7873df499, type: 3}
@@ -7486,7 +7488,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 469200687ed52db4294c1cb881497e02, type: 2}
     - target: {fileID: 400004, guid: 10dccfe1d14a8274bb3166e7873df499, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.17
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2300002, guid: 10dccfe1d14a8274bb3166e7873df499, type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -7494,11 +7496,11 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 771e5bf75d22d8641aeb18f03500f494, type: 2}
     - target: {fileID: 400004, guid: 10dccfe1d14a8274bb3166e7873df499, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 10dccfe1d14a8274bb3166e7873df499, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 10dccfe1d14a8274bb3166e7873df499, type: 3}
       propertyPath: m_LocalScale.x
@@ -9357,12 +9359,12 @@ Prefab:
     - target: {fileID: 224557073958580292, guid: 95d38626a2d43f04c9356807ea9ce20a,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 819.5
+      value: 933
       objectReference: {fileID: 0}
     - target: {fileID: 224557073958580292, guid: 95d38626a2d43f04c9356807ea9ce20a,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1662338394517868, guid: 95d38626a2d43f04c9356807ea9ce20a, type: 2}
       propertyPath: m_IsActive
@@ -9378,6 +9380,11 @@ Prefab:
       propertyPath: manager
       value: 
       objectReference: {fileID: 943387581}
+    - target: {fileID: 81569765072580122, guid: 95d38626a2d43f04c9356807ea9ce20a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95d38626a2d43f04c9356807ea9ce20a, type: 2}
   m_IsPrefabParent: 0
@@ -9393,21 +9400,6 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 400004, guid: 10dccfe1d14a8274bb3166e7873df499, type: 3}
   m_PrefabInternal: {fileID: 1376261026}
---- !u!54 &1836116029
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1836116025}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 122
-  m_CollisionDetection: 0
 --- !u!65 &1836116030
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9416,7 +9408,7 @@ BoxCollider:
   m_GameObject: {fileID: 1836116025}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 2.0000005, z: 0.23649769}
   m_Center: {x: 0, y: 4.8247844e-17, z: -0.027854852}

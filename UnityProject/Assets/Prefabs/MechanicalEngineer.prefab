@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 114279903349019540}
   - component: {fileID: 114739392242759748}
   - component: {fileID: 114403728567270786}
+  - component: {fileID: 114261389472848124}
   m_Layer: 0
   m_Name: MechanicalEngineer
   m_TagString: Player
@@ -1595,7 +1596,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378456030925906}
-  m_LocalRotation: {x: 0.34933025, y: 0.3538483, z: 0.55573434, w: 0.66627264}
+  m_LocalRotation: {x: 0.34933022, y: 0.35384828, z: 0.5557343, w: 0.6662726}
   m_LocalPosition: {x: -0.06613916, y: -0.000000014784746, z: -0.000000012440978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1738,6 +1739,17 @@ MonoBehaviour:
   responsiveness: 0.2
   distance: 5
   mouseSensitivity: 2
+--- !u!114 &114261389472848124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1168264223263048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ab282da8415084ba27784388d832a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114279903349019540
 MonoBehaviour:
   m_ObjectHideFlags: 1

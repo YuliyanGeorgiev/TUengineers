@@ -22,6 +22,7 @@ public class ConveyorTerminal : NetworkBehaviour, IInteractiveObject {
 	Conveyor conveyor;
 	bool interacting;
 	public Text compileResult;
+	PlayerCommands commands;
 
 	void Start () {
 		Compile(); // so it compiles the initial settings (words set in editor)
@@ -57,12 +58,11 @@ public class ConveyorTerminal : NetworkBehaviour, IInteractiveObject {
 	}
 
 	public void NetworkCompile() {
-		if(Network.isServer) {
-			RpcCompile(userDir1.text, userDir2.text, userTime.text);
-		} else {
-			CmdCompile(userDir1.text, userDir2.text, userTime.text);
-			Debug.Log("ich bin client");
-		}
+		
+		//CmdCompile(userDir1.text, userDir2.text, userTime.text);
+		playerTransform.GetComponent<PlayerCommands>().CmdCompileConveyor(userDir1.text, userDir2.text, userTime.text, this.gameObject);
+		Debug.Log("ich bin client");
+
 	}
 
 	[Command]

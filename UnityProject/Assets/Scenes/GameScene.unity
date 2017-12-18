@@ -8201,6 +8201,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1503966087}
   m_Mesh: {fileID: 4300032, guid: 5a9c4b95a535faf4fa84bafd9ac30dfd, type: 3}
+--- !u!114 &1506946636 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114721578927514290, guid: 95d38626a2d43f04c9356807ea9ce20a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1783307880}
+  m_Script: {fileID: 575553740, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1518581636
 GameObject:
   m_ObjectHideFlags: 0
@@ -9359,12 +9365,12 @@ Prefab:
     - target: {fileID: 224557073958580292, guid: 95d38626a2d43f04c9356807ea9ce20a,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 933
+      value: 828.5
       objectReference: {fileID: 0}
     - target: {fileID: 224557073958580292, guid: 95d38626a2d43f04c9356807ea9ce20a,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -39
       objectReference: {fileID: 0}
     - target: {fileID: 1662338394517868, guid: 95d38626a2d43f04c9356807ea9ce20a, type: 2}
       propertyPath: m_IsActive
@@ -9385,6 +9391,21 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114611573493908548, guid: 95d38626a2d43f04c9356807ea9ce20a,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114611573493908548, guid: 95d38626a2d43f04c9356807ea9ce20a,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114248556132986482, guid: 95d38626a2d43f04c9356807ea9ce20a,
+        type: 2}
+      propertyPath: myInput
+      value: 
+      objectReference: {fileID: 1506946636}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95d38626a2d43f04c9356807ea9ce20a, type: 2}
   m_IsPrefabParent: 0

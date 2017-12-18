@@ -19,7 +19,7 @@ public class JoinGame : MonoBehaviour {
 	Canvas canvasObject;
 
 	[SerializeField]
-	Input myInput;
+	InputField myInput;
 
 	Camera myCamera;
 	Canvas myCanvas;
@@ -37,7 +37,7 @@ public class JoinGame : MonoBehaviour {
 
 	void TaskOnClick (){
 		manager.networkPort = 7777;
-		manager.networkAddress = myInput.ToString();
+		manager.networkAddress = myInput.text;
 		manager.StartClient();
 		myCamera.enabled = false;
 		myCanvas.enabled = false;

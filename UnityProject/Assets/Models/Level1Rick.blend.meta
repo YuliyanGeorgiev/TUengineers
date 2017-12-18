@@ -112,6 +112,27 @@ ModelImporter:
     4300036: Cable_012
     4300038: Cable_013
     4300040: Cable_014
+    6400000: Cable
+    6400002: Cable_001
+    6400004: Cable_002
+    6400006: Cable_003
+    6400008: Cable_004
+    6400010: Cable_005
+    6400012: Cable_006
+    6400014: Cable_007
+    6400016: Cable_008
+    6400018: Cable_009
+    6400020: Cable_010
+    6400022: Cable_011
+    6400024: Cable_012
+    6400026: Cable_013
+    6400028: Cable_014
+    6400030: Door
+    6400032: DoorController
+    6400034: Floor
+    6400036: Icosphere
+    6400038: Icosphere_001
+    6400040: Walls
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -171,7 +192,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1

@@ -10,14 +10,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Elevator : MonoBehaviour {
-	float speed;
 	[SerializeField]
-	Rigidbody rb;
+	float lowerheight, upperheight;
+	GameObject platform;
+	float speed;
 
-    void FixedUpdate() {
-		//rb.MovePosition(rb.transform.position + rb.transform.up * -speed * 10000);
-		rb.velocity = rb.transform.forward * speed;
-    }
+	void Start () {
+		platform = transform.Find("MovingPart").gameObject;
+	}
+
+	void Update () {
+		platform.transform.position += platform.transform.forward*speed*Time.deltaTime;
+		platform.transform.localPosition = new Vector3(platform.transform.localPosition.x, Mathf.Clamp(platform.transform.localPosition.y, lowerheight, upperheight), platform.transform.localPosition.z);
+	}
 
     public void SetSpeed(float newSpeed) {
 		speed = newSpeed;

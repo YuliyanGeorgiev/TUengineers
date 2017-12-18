@@ -17,9 +17,11 @@ public class PlayerCommands : NetworkBehaviour {
 		
 	[Command]
 	public void CmdCompileConveyor(string input1, string input2, string input3, GameObject terminal) {
-		//Compile();
-		Debug.Log("RPC Test Server");
 		terminal.GetComponent<ConveyorTerminal>().RpcCompile(input1, input2, input3);
-		//terminal.GetComponent
+	}
+
+	[Command]
+	public void CmdCompileElevator(string input, GameObject terminal) {
+		terminal.GetComponent<ElevatorTerminal>().RpcCompile(input);
 	}
 }

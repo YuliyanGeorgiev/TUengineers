@@ -42,17 +42,7 @@ public class ElevatorTerminal : NetworkBehaviour, IInteractiveObject {
 	}
 
 	public void NetworkCompile() {
-		if(Network.isServer) {
-			RpcCompile(userInput.text);
-		} else {
-			CmdCompile(userInput.text);
-		}
-	}
-
-	[Command]
-	public void CmdCompile(string input) {
-		Debug.Log("RPC Test Server");
-		RpcCompile(userInput.text);
+		playerTransform.GetComponent<PlayerCommands>().CmdCompileElevator(userInput.text, this.gameObject);
 	}
 
 	[ClientRpc]

@@ -7,13 +7,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Conveyor : MonoBehaviour {
+public class Conveyor : NetworkBehaviour {
 	[SerializeField]
 	Transform[] wheels;
 
 	List<Transform> products = new List<Transform>(); //a list of everything that lies on the conveyor
-	float speed = 1;
+	[SyncVar]
+	float speed;
 
 	void Update () {
 		foreach(Transform product in products) {
@@ -36,6 +38,8 @@ public class Conveyor : MonoBehaviour {
 	}
 
 	public void SetSpeed (float newSpeed) {
-		speed = newSpeed;
+		if(isServer) {
+			speed = newSpeed;
+		}
 	}
 }

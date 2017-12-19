@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour {
     private PlayerActivator respawn;
 
 	void Start () {
-        health = 80;
         spawnPoint = GameObject.Find("SpawnPoint");
         respawn = GetComponent<PlayerActivator>();
 		rb = transform.GetComponent<Rigidbody>();

@@ -30,22 +30,36 @@ public class Turret : NetworkBehaviour {
 	float stopSearchTime;
 	public Light muzzleFlash;
 	float muzzleFlashTime;
+	[SyncVar]
     public int health;
-
-	Vector3 midDirection;
-	Vector3 topDirection;
+	[SyncVar]
+	Vector3 midDirection, topDirection;
 	void Start () {
-        health = 100;
+        //health = 100; // can't do that otherwise turrets have full health for clients that join the game later
         line = GetComponent<LineRenderer>();
 	}
+
+
 	
 	void Update () {
+		if(health <= 0) {
+			laser.enabled = false;
+			top.transform.localRotation = Quaternion.Euler(45,0,3); // Can be done smoother?
+			this.transform.tag = "Untagged"; // So it's not targeted anymore when disabled
+			return;
+		}
+		if(!isServer) {
+			lookRotation = Quaternion.LookRotation(midDirection);
+			mid.transform.rotation = Quaternion.Lerp(mid.transform.rotation, lookRotation, 0.1f);
+			top.transform.rotation = Quaternion.Lerp(top.transform.rotation, Quaternion.LookRotation(topDirection), 0.1f); // 0.1f is test value, smaller = smoother but less accurate (this is really smooth but perhaps too much delay)
+			return;
+		}
         RaycastHit hit;
         //Vector3 forward = transform.TransformDirection(Vector3.forward) * range;
-		if(target != null) { // so the turret rotates to the target before it checks if it can still see it. Improves tracking.
+		if(target != null && health > 0) { // so the turret rotates to the target before it checks if it can still see it. Improves tracking.
 			midDirection = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z);
 			topDirection = new Vector3(target.transform.position.x - mid.transform.position.x , target.transform.position.y - laserOrigin.position.y, target.transform.position.z - mid.transform.position.z);
-		} else if(Time.time > stopSearchTime) {
+		} else if(Time.time > stopSearchTime && health > 0) {
 			if(rotSpeed == 0) {
 				midDirection = Quaternion.Euler(0,Time.deltaTime*100,0) * transform.forward;
 				topDirection = midDirection;
@@ -54,9 +68,6 @@ public class Turret : NetworkBehaviour {
 				topDirection = midDirection;
 			}
 		}
-
-
-
 
 		lookRotation = Quaternion.LookRotation(midDirection);
 		mid.transform.rotation = lookRotation;
@@ -83,18 +94,17 @@ public class Turret : NetworkBehaviour {
 	void Fire(GameObject target) {
 		if(Time.time > nextFire) {
 			nextFire = Time.time + fireRate; // Set time for the fire rate
-			GameObject spawnedBullet = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation); // Maybe network instantiate?
-			//NetworkServer.Spawn(spawnedBullet);
-			RpcDoDamage(target);
+			if(isServer) {
+				RpcDoDamage(target);
+			}
 			muzzleFlash.enabled = true;
 			muzzleFlashTime = Time.time + 0.1f;
-
-
 		}
 	}
 
 	[ClientRpc]
 	public void RpcDoDamage(GameObject target) {
+		GameObject spawnedBullet = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
 		if(target.tag=="Player") {
 			target.transform.GetComponent<PlayerController>().TakeDamage();
 		} else {
@@ -115,10 +125,12 @@ public class Turret : NetworkBehaviour {
             health -= 10;
 			top.transform.Rotate(0f, 0f, top.transform.rotation.z - 3);
         }
-        else if (health == 0)
+        else if (health <= 0)
         {
             laser.enabled = false;
-            GetComponent<Turret>().enabled = false;
+			top.transform.localRotation = Quaternion.Euler(45,0,3); // Can be done smoother?
+			this.transform.tag = "Untagged"; // So it's not targeted anymore when disabled
+			//this.transform.GetComponent<Turret>().enabled = false;
         }
     }
 }

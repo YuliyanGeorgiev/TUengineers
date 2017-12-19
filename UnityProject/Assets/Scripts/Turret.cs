@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
 
 /*
  * @author Yuliyan Georgiev 
@@ -6,7 +9,7 @@
  * Turret behaviour script
  */
 
-public class Turret : MonoBehaviour {
+public class Turret : NetworkBehaviour {
 
 	public float rotSpeed;
     public int range = 15;
@@ -65,7 +68,7 @@ public class Turret : MonoBehaviour {
 				target = hit.transform.gameObject;
 				//targetDistance = hit.distance;
 				//Debug.Log(target);
-				Fire();
+				Fire(target);
 			} else {
 				target = null; // Target is lost when the turret can't see it
 
@@ -77,12 +80,25 @@ public class Turret : MonoBehaviour {
 		}
 	}
 
-	void Fire() {
+	void Fire(GameObject target) {
 		if(Time.time > nextFire) {
 			nextFire = Time.time + fireRate; // Set time for the fire rate
-			Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+			GameObject spawnedBullet = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation); // Maybe network instantiate?
+			//NetworkServer.Spawn(spawnedBullet);
+			RpcDoDamage(target);
 			muzzleFlash.enabled = true;
 			muzzleFlashTime = Time.time + 0.1f;
+
+
+		}
+	}
+
+	[ClientRpc]
+	public void RpcDoDamage(GameObject target) {
+		if(target.tag=="Player") {
+			target.transform.GetComponent<PlayerController>().TakeDamage();
+		} else {
+			target.transform.GetComponent<Turret>().TakeDamage(); // only other possibility is turret so no need to check tag
 		}
 	}
 

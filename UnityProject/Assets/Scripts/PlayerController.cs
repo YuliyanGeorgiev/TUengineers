@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour {
         health -= 10;
         if (health == 0)
         {
-            health = 80;
+            health = 50;
             transform.position = spawnPoint.transform.position;
         }
     }

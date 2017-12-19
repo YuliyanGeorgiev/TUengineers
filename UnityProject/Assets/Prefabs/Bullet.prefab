@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23850085504708640}
   - component: {fileID: 54916309973615420}
   - component: {fileID: 114469698710585806}
+  - component: {fileID: 114939458818087416}
   m_Layer: 2
   m_Name: Bullet
   m_TagString: Untagged
@@ -39,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 1676887299229844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.4802887, y: 1.0145, z: 8.419924}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,7 +109,7 @@ BoxCollider:
   m_GameObject: {fileID: 1676887299229844}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -124,4 +125,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAfterThisTime: 2
-  speed: 40
+  speed: 60
+--- !u!114 &114939458818087416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676887299229844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 50
+    i1: 24
+    i2: 75
+    i3: 53
+    i4: 143
+    i5: 123
+    i6: 216
+    i7: 244
+    i8: 74
+    i9: 84
+    i10: 152
+    i11: 228
+    i12: 224
+    i13: 170
+    i14: 51
+    i15: 124
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

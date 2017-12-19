@@ -15,33 +15,21 @@ public class Bullet : MonoBehaviour {
 	public float speed;
     private Turret turretScript;
     private PlayerController playerScript;
+	RaycastHit hit;
 
 	private void Start() {
 		GetComponent<Rigidbody>().velocity = transform.forward * speed;
 		Invoke("DestroyBullet", destroyAfterThisTime);
 	}
 
-	private void OnCollisionEnter(Collision c) {
-		DestroyBullet();
+	void Update() {
+		if(Physics.Raycast(transform.position, transform.forward, out hit, 1)) { // 1 is test value, make larger if doesnt collide. Smaller if it explodes before collision
+			Explode();
+		}
 	}
+		
 
-	void DestroyBullet() {
-		Destroy(gameObject);
+	public void Explode() {
+		Destroy(this.gameObject); // add cool effect?
 	}
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Turret")
-        {
-            turretScript = other.GetComponent<Turret>();
-            DestroyBullet();
-            turretScript.TakeDamage();
-        }
-        else if(other.tag == "Player")
-        {
-            playerScript = other.GetComponent<PlayerController>();
-            DestroyBullet();
-            playerScript.TakeDamage();
-        }
-    }
 }

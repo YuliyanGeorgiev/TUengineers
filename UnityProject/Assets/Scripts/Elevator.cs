@@ -8,12 +8,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class Elevator : MonoBehaviour {
+public class Elevator : NetworkBehaviour {
 	[SerializeField]
 	float lowerheight, upperheight;
 	GameObject platform;
-	float speed;
+	[SyncVar]
+	float speed, height;
 
 	void Start () {
 		platform = transform.Find("MovingPart").gameObject;
@@ -21,10 +23,13 @@ public class Elevator : MonoBehaviour {
 
 	void Update () {
 		platform.transform.position += platform.transform.forward*speed*Time.deltaTime;
-		platform.transform.localPosition = new Vector3(platform.transform.localPosition.x, Mathf.Clamp(platform.transform.localPosition.y, lowerheight, upperheight), platform.transform.localPosition.z);
+		height = Mathf.Clamp(platform.transform.localPosition.y, lowerheight, upperheight);
+		platform.transform.localPosition = new Vector3(platform.transform.localPosition.x, height, platform.transform.localPosition.z);
 	}
 
     public void SetSpeed(float newSpeed) {
-		speed = newSpeed;
+		if(isServer) {
+			speed = newSpeed;
+		}
     }
 }

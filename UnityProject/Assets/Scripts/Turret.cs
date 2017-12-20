@@ -11,6 +11,9 @@ using UnityEngine.Networking;
 
 public class Turret : NetworkBehaviour {
 
+	public bool isAreaTurret;
+	[SerializeField]
+	float rotSwitchTime;
 	public float rotSpeed;
     public int range = 15;
     //public float targetDistance;
@@ -34,6 +37,8 @@ public class Turret : NetworkBehaviour {
     public int health;
 	[SyncVar]
 	Vector3 midDirection, topDirection;
+	float nextRotSwitchTime;
+	float rotTime;
 	void Start () {
         //health = 100; // can't do that otherwise turrets have full health for clients that join the game later
         line = GetComponent<LineRenderer>();
@@ -53,6 +58,15 @@ public class Turret : NetworkBehaviour {
 			mid.transform.rotation = Quaternion.Lerp(mid.transform.rotation, lookRotation, 0.1f);
 			top.transform.rotation = Quaternion.Lerp(top.transform.rotation, Quaternion.LookRotation(topDirection), 0.1f); // 0.1f is test value, smaller = smoother but less accurate (this is really smooth but perhaps too much delay)
 			return;
+		}
+		if(isAreaTurret) {
+			if(rotTime > nextRotSwitchTime) {
+				nextRotSwitchTime = Time.deltaTime + rotSwitchTime;
+				rotTime = Time.deltaTime;
+				rotSpeed *= -1;
+			} else {
+				rotTime += Time.deltaTime;
+			}
 		}
         RaycastHit hit;
         //Vector3 forward = transform.TransformDirection(Vector3.forward) * range;

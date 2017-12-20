@@ -17,10 +17,14 @@ public class ElevatorRoof : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		if(c.transform.tag == "Turret") {
 			c.transform.GetComponent<Turret>().health = 0;
+			Destroy(c.transform.GetComponent<BoxCollider>());
 			foreach(Transform child in c.transform.GetComponentsInChildren<Transform>()) {
-				child.gameObject.AddComponent<Rigidbody>();
-				child.gameObject.AddComponent<BoxCollider>();
-				child.parent = null;
+				if(child.name == "Mid" || child.name == "Top" || child.name == "Base") {
+					child.gameObject.AddComponent<Rigidbody>();
+					child.gameObject.AddComponent<BoxCollider>();
+					child.GetComponent<BoxCollider>().size*=0.5f;
+					child.parent = null;
+				}
 			}
 		}
 	}

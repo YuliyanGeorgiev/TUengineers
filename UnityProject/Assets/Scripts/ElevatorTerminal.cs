@@ -58,6 +58,7 @@ public class ElevatorTerminal : NetworkBehaviour, IInteractiveObject {
 		playerTransform.GetComponent<PlayerVars>().playerCamera.enabled = false; // disable player camera
 		this.transform.GetChild(0).gameObject.SetActive(true); // enable terminal camera and input field
 		interacting = true;
+		playerTransform.GetComponent<Rigidbody>().velocity = Vector3.zero;
 	}
 
 	public void Release() {

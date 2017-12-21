@@ -29,7 +29,7 @@ public class Elevator : NetworkBehaviour {
 
     public void SetSpeed(float newSpeed) {
 		if(isServer) {
-			speed = newSpeed;
+			speed = newSpeed/100;
 		}
     }
 }

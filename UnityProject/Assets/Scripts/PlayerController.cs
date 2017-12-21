@@ -39,6 +39,11 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+	void Awake () {
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+	}
+
 
 	void Update () {
 		//grounded = Physics.Raycast(transform.position + transform.up, -transform.up, 1f);
@@ -71,7 +76,7 @@ public class PlayerController : MonoBehaviour {
 		anim.SetBool("carry", carry);
 
 		if(carry && holdingObject==null) {
-			if(Physics.Raycast((leftHand.position + rightHand.position)/2 - transform.forward*0.05f, transform.forward, out hit, 0.1f)) {
+			if(Physics.Raycast((leftHand.position + rightHand.position)/2 - transform.forward*0.05f, transform.forward, out hit, 0.3f)) {
 				if(hit.transform.tag == "Interactive") {
 					holdingObject = hit.transform.gameObject;
 					holdingObject.transform.GetComponent<IInteractiveObject>().Interact(this.transform);

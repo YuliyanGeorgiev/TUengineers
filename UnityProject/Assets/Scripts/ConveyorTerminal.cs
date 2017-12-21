@@ -88,6 +88,9 @@ public class ConveyorTerminal : NetworkBehaviour, IInteractiveObject {
 		this.transform.GetChild(0).gameObject.SetActive(true); // enable terminal camera and input field
 		interacting = true;
 		playerTransform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 
 	public void Release() {
@@ -95,6 +98,9 @@ public class ConveyorTerminal : NetworkBehaviour, IInteractiveObject {
 		playerTransform.GetComponent<PlayerVars>().playerCamera.enabled = true; // enable player camera
 		this.transform.GetChild(0).gameObject.SetActive(false); // disable terminal camera and input field
 		interacting = false;
+
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 	}
 
 	private void SetSuccess()

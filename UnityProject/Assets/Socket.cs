@@ -51,7 +51,7 @@ public class Socket : MonoBehaviour
             }
             if (gate.name == "INV")
             {
-                output = !input1;
+                output = !input1.output;
             }
         }
         else

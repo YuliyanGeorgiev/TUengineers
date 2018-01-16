@@ -1954,6 +1954,7 @@ GameObject:
   - component: {fileID: 378262550}
   - component: {fileID: 378262549}
   - component: {fileID: 378262548}
+  - component: {fileID: 378262551}
   m_Layer: 0
   m_Name: DoorController
   m_TagString: Untagged
@@ -2034,6 +2035,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 378262546}
   m_Mesh: {fileID: 4300006, guid: 5a9c4b95a535faf4fa84bafd9ac30dfd, type: 3}
+--- !u!114 &378262551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 378262546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466d3bc3c5d35784d84e0cf3aea533ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socket: {fileID: 2055620254}
+  elevator: {fileID: 0}
+  conveyor: {fileID: 0}
+  light: {fileID: 2137238536}
 --- !u!1 &386499699
 GameObject:
   m_ObjectHideFlags: 0

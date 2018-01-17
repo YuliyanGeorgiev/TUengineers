@@ -435,10 +435,14 @@ Transform:
   - {fileID: 1269194338}
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 6
 =======
   m_RootOrder: 4
 >>>>>>> master
+=======
+  m_RootOrder: 5
+>>>>>>> parent of df4f36b... Intro Level Model
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &91764840
 GameObject:
@@ -2580,60 +2584,6 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 49e78420f1ecf2a4c9f3b7308bd810f9, type: 3}
   m_PrefabInternal: {fileID: 399188272}
---- !u!1001 &507127343
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -52.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -7.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.072337
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0723367
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0723367
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: f4fa0edb11ede2d4682385eebe2d7df4, type: 3}
-  m_IsPrefabParent: 0
 --- !u!1 &514309460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4356,10 +4306,14 @@ Transform:
   - {fileID: 880213654}
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 5
 =======
   m_RootOrder: 3
 >>>>>>> master
+=======
+  m_RootOrder: 4
+>>>>>>> parent of df4f36b... Intro Level Model
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &743113826 stripped
 GameObject:
@@ -5592,10 +5546,14 @@ Prefab:
     - target: {fileID: 4637711697284764, guid: 1103122e491ceca4eaef9261a6fef4a5, type: 2}
       propertyPath: m_RootOrder
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 2
 =======
       value: 13
 >>>>>>> master
+=======
+      value: 1
+>>>>>>> parent of df4f36b... Intro Level Model
       objectReference: {fileID: 0}
     - target: {fileID: 4637711697284764, guid: 1103122e491ceca4eaef9261a6fef4a5, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -5669,10 +5627,14 @@ Prefab:
     - target: {fileID: 400000, guid: 0500742be8b8a8248b6dd325944c4c4b, type: 3}
       propertyPath: m_RootOrder
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 3
 =======
       value: 1
 >>>>>>> master
+=======
+      value: 2
+>>>>>>> parent of df4f36b... Intro Level Model
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0500742be8b8a8248b6dd325944c4c4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10731,10 +10693,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 8
 =======
   m_RootOrder: 6
 >>>>>>> master
+=======
+  m_RootOrder: 7
+>>>>>>> parent of df4f36b... Intro Level Model
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741312670
 GameObject:
@@ -11089,10 +11055,14 @@ Prefab:
     - target: {fileID: 4780562368827960, guid: 95d38626a2d43f04c9356807ea9ce20a, type: 2}
       propertyPath: m_RootOrder
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 4
 =======
       value: 2
 >>>>>>> master
+=======
+      value: 3
+>>>>>>> parent of df4f36b... Intro Level Model
       objectReference: {fileID: 0}
     - target: {fileID: 224557073958580292, guid: 95d38626a2d43f04c9356807ea9ce20a,
         type: 2}
@@ -12713,10 +12683,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 7
 =======
   m_RootOrder: 5
 >>>>>>> master
+=======
+  m_RootOrder: 6
+>>>>>>> parent of df4f36b... Intro Level Model
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!1 &2106938910 stripped
 GameObject:

@@ -12517,9 +12517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowerheight: 5.56
-  lowerheight: 5.63
-  upperheight: 9
-  sound: {fileID: 0}
+  upperheight: 8.15
 --- !u!1 &2104485715
 GameObject:
   m_ObjectHideFlags: 0

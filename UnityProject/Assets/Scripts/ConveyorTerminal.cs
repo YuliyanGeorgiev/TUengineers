@@ -23,17 +23,13 @@ public class ConveyorTerminal : NetworkBehaviour, IInteractiveObject {
 	bool interacting;
 	public Text compileResult;
 	PlayerCommands commands;
-    public AudioSource shut;
-    public AudioSource start;
 
-    void Start () {
+	void Start () {
 		Compile(); // so it compiles the initial settings (words set in editor)
 	}
 
 	void Update () {
 		if(Input.GetKey(KeyCode.Escape) && interacting) { //always possible needs to change?
-            start.Stop();
-            shut.Play();
 			Release();
 		}
 
@@ -86,8 +82,7 @@ public class ConveyorTerminal : NetworkBehaviour, IInteractiveObject {
 	}
 
 	public void Interact(Transform player) {
-        start.Play();
-        playerTransform = player;
+		playerTransform = player;
 		playerTransform.GetComponent<PlayerController>().enabled = false; // disable playerController
 		playerTransform.GetComponent<PlayerVars>().playerCamera.enabled = false; // disable player camera
 		this.transform.GetChild(0).gameObject.SetActive(true); // enable terminal camera and input field

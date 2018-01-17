@@ -10,11 +10,9 @@ public class TerminalActivator : MonoBehaviour {
     Camera termCAm;
     private float fireRate;
     private float nextFire;
-    public AudioSource start;
 
     private void Start()
     {
-        start.Play();
         mainCam = main.GetComponent<Camera>();
         termCAm = terminal.GetComponent<Camera>();
     }

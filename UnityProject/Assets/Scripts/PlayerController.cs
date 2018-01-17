@@ -30,9 +30,6 @@ public class PlayerController : MonoBehaviour {
 	bool carry;
 	bool run;
     private PlayerActivator respawn;
-    public AudioSource hitSound;
-    public AudioSource walk;
-    public AudioSource land;
 
 	void Start () {
         spawnPoint = GameObject.Find("SpawnPoint");
@@ -55,25 +52,22 @@ public class PlayerController : MonoBehaviour {
 			velocity += transform.forward * speed;
 		}
 		if(Input.GetKey(KeyCode.S)) {
-            velocity -= transform.forward * speed;
+			velocity -= transform.forward * speed;
 		}
 		if(Input.GetKey(KeyCode.A)) {
-            velocity -= transform.right * speed;
+			velocity -= transform.right * speed;
 		}
 		if(Input.GetKey(KeyCode.D)) {
-            velocity += transform.right * speed;
+			velocity += transform.right * speed;
 		}
-		if(velocity != Vector3.zero) {
-            walk.Play();
+		if(velocity != Vector3.zero) { 
 			run = true; //play run animation
 		} else {
-            walk.Stop();
 			run = false; //stop run animation
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && grounded == true) {
-			velocity += transform.up * jumpForce * 0.5f;
-			grounded = false;
-            land.Play();
+				velocity += transform.up * jumpForce * 0.5f;
+				grounded = false; 
 		}			
 
 		carry = Input.GetKey(KeyCode.Mouse0); //carry = true if mousebutton is pressed
@@ -104,7 +98,6 @@ public class PlayerController : MonoBehaviour {
 
     public void TakeDamage()
     {
-        hitSound.Play();
         Debug.Log("hit");
         health -= 10;
         if (health == 0)

@@ -16,12 +16,14 @@ public class Elevator : NetworkBehaviour {
 	GameObject platform;
 	[SyncVar]
 	float speed, height;
+    public AudioSource sound;
 
 	void Start () {
 		platform = transform.Find("MovingPart").gameObject;
 	}
 
 	void Update () {
+        sound.Play();
 		platform.transform.position += platform.transform.forward*speed*Time.deltaTime;
 		height = Mathf.Clamp(platform.transform.localPosition.y, lowerheight, upperheight);
 		platform.transform.localPosition = new Vector3(platform.transform.localPosition.x, height, platform.transform.localPosition.z);

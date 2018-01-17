@@ -19,9 +19,13 @@ public class ElevatorTerminal : NetworkBehaviour, IInteractiveObject {
 	Elevator elevator;
 	bool interacting;
 	public Text compileResult;
+    public AudioSource shut;
+    public AudioSource start;
 
-	void Update () {
+    void Update () {
 		if(Input.GetKey(KeyCode.Escape) && interacting) { //always possible needs to change?
+            start.Stop();
+            shut.Play();
 			Release();
 		}
 
@@ -53,6 +57,7 @@ public class ElevatorTerminal : NetworkBehaviour, IInteractiveObject {
 	}
 
 	public void Interact(Transform player) {
+        start.Play();
 		playerTransform = player;
 		playerTransform.GetComponent<PlayerController>().enabled = false; // disable playerController
 		playerTransform.GetComponent<PlayerVars>().playerCamera.enabled = false; // disable player camera

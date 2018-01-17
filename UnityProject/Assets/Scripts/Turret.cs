@@ -39,6 +39,9 @@ public class Turret : NetworkBehaviour {
 	Vector3 midDirection, topDirection;
 	float nextRotSwitchTime;
 	float rotTime;
+    public AudioSource boom;
+    public AudioSource turret;
+
 	void Start () {
         //health = 100; // can't do that otherwise turrets have full health for clients that join the game later
         line = GetComponent<LineRenderer>();
@@ -141,6 +144,8 @@ public class Turret : NetworkBehaviour {
         }
         else if (health <= 0)
         {
+            turret.Stop();
+            boom.Play();
             laser.enabled = false;
 			top.transform.localRotation = Quaternion.Euler(45,0,3); // Can be done smoother?
 			this.transform.tag = "Untagged"; // So it's not targeted anymore when disabled

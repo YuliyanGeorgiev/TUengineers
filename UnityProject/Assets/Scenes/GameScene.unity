@@ -471,6 +471,7 @@ Transform:
   m_Children:
   - {fileID: 258933865}
   m_Father: {fileID: 83551154}
+  m_RootOrder: 5
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &91764842

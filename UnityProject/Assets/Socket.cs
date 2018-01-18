@@ -11,6 +11,7 @@ public class Socket : MonoBehaviour
     public GameObject outputWire;
     GameObject gate;
     public bool isCable;
+    public AudioSource zap;
 
 
     void OnTriggerEnter(Collider c)
@@ -29,6 +30,7 @@ public class Socket : MonoBehaviour
         {
             if (gate.name == "AND")
             {
+                zap.Play();
                 if (input1.output && input2.output)
                 {
                     output = true;
@@ -39,6 +41,7 @@ public class Socket : MonoBehaviour
                 }
             }
             if (gate.name == "XOR")
+                zap.Play();
             {
                 if (input1.output ^ input2.output)
                 {
@@ -51,6 +54,7 @@ public class Socket : MonoBehaviour
             }
             if (gate.name == "INV")
             {
+                zap.Play();
                 output = !input1.output;
             }
         }

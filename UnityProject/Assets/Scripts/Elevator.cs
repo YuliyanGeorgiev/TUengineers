@@ -16,6 +16,7 @@ public class Elevator : NetworkBehaviour {
 	GameObject platform;
 	[SyncVar]
 	float speed, height;
+    //public AudioSource elevator;
 
 	void Start () {
 		platform = transform.Find("MovingPart").gameObject;

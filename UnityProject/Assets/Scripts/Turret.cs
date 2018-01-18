@@ -39,7 +39,11 @@ public class Turret : NetworkBehaviour {
 	Vector3 midDirection, topDirection;
 	float nextRotSwitchTime;
 	float rotTime;
-	void Start () {
+    public AudioSource boom;
+    public AudioSource turretSound;
+    public AudioSource start;
+
+    void Start () {
         //health = 100; // can't do that otherwise turrets have full health for clients that join the game later
         line = GetComponent<LineRenderer>();
 	}
@@ -48,7 +52,15 @@ public class Turret : NetworkBehaviour {
 	
 	void Update () {
 		if(health <= 0) {
-			laser.enabled = false;
+            if (turretSound != null)
+            {
+                turretSound.Stop();
+            }
+            if (this.transform.tag == "Turret")
+            {
+                boom.Play();
+            }
+            laser.enabled = false;
 			top.transform.localRotation = Quaternion.Euler(45,0,3); // Can be done smoother?
 			this.transform.tag = "Untagged"; // So it's not targeted anymore when disabled
 			return;
@@ -71,6 +83,10 @@ public class Turret : NetworkBehaviour {
         RaycastHit hit;
         //Vector3 forward = transform.TransformDirection(Vector3.forward) * range;
 		if(target != null && health > 0) { // so the turret rotates to the target before it checks if it can still see it. Improves tracking.
+            if (rotSpeed == 0)
+            {
+                start.Play();
+            }
 			midDirection = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z);
 			topDirection = new Vector3(target.transform.position.x - mid.transform.position.x , target.transform.position.y - laserOrigin.position.y, target.transform.position.z - mid.transform.position.z);
 		} else if(Time.time > stopSearchTime && health > 0) {
@@ -141,6 +157,10 @@ public class Turret : NetworkBehaviour {
         }
         else if (health <= 0)
         {
+            turretSound.playOnAwake = false;
+            turretSound.enabled = false;
+            turretSound.Stop();
+            boom.Play();
             laser.enabled = false;
 			top.transform.localRotation = Quaternion.Euler(45,0,3); // Can be done smoother?
 			this.transform.tag = "Untagged"; // So it's not targeted anymore when disabled

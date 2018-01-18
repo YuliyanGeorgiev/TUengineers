@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour {
 	bool carry;
 	bool run;
     private PlayerActivator respawn;
+    public AudioSource hitSound;
+    public AudioSource walk;
 
 	void Start () {
         spawnPoint = GameObject.Find("SpawnPoint");
@@ -60,9 +62,11 @@ public class PlayerController : MonoBehaviour {
 		if(Input.GetKey(KeyCode.D)) {
 			velocity += transform.right * speed;
 		}
-		if(velocity != Vector3.zero) { 
+		if(velocity != Vector3.zero) {
 			run = true; //play run animation
+            walk.Play();
 		} else {
+            walk.Stop();
 			run = false; //stop run animation
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && grounded == true) {
@@ -99,6 +103,7 @@ public class PlayerController : MonoBehaviour {
     public void TakeDamage()
     {
         Debug.Log("hit");
+        hitSound.Play();
         health -= 10;
         if (health == 0)
         {

@@ -41,8 +41,8 @@ public class Socket : MonoBehaviour
                 }
             }
             if (gate.name == "XOR")
-                zap.Play();
             {
+                zap.Play();
                 if (input1.output ^ input2.output)
                 {
                     output = true;

@@ -48,6 +48,10 @@ public class PlayerController : MonoBehaviour {
 
 
 	void Update () {
+
+		if(Input.GetKey(KeyCode.P)) {
+			walk.Play();
+		}
 		//grounded = Physics.Raycast(transform.position + transform.up, -transform.up, 1f);
 		velocity = Vector3.zero;
 		if(Input.GetKey(KeyCode.W)) {

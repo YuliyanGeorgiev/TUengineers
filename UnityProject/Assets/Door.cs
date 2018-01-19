@@ -20,11 +20,11 @@ public class Door : MonoBehaviour
 
     void Open()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1, 1, 0.2f), Time.deltaTime);
+        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(transform.localScale.x, transform.localScale.y, 0.2f), Time.deltaTime);
     }
 
     void Close()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1, 1, 1), Time.deltaTime);
+        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(transform.localScale.x, transform.localScale.y, 1), Time.deltaTime);
     }
 }

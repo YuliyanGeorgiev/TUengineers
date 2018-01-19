@@ -42,6 +42,7 @@ public class Turret : NetworkBehaviour {
     public AudioSource boom;
     public AudioSource turretSound;
     public AudioSource start;
+	public AudioClip shot;
 
     void Start () {
         //health = 100; // can't do that otherwise turrets have full health for clients that join the game later
@@ -124,6 +125,7 @@ public class Turret : NetworkBehaviour {
 	void Fire(GameObject target) {
 		if(Time.time > nextFire) {
 			nextFire = Time.time + fireRate; // Set time for the fire rate
+			boom.PlayOneShot(shot);
 			if(isServer) {
 				RpcDoDamage(target);
 			}

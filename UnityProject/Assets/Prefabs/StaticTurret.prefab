@@ -530,6 +530,10 @@ MonoBehaviour:
   searchTime: 0.5
   muzzleFlash: {fileID: 108390568746575324}
   health: 100
+  boom: {fileID: 0}
+  turretSound: {fileID: 0}
+  start: {fileID: 0}
+  shot: {fileID: 0}
 --- !u!114 &114725408318978208
 MonoBehaviour:
   m_ObjectHideFlags: 1

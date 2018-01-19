@@ -19,7 +19,7 @@ public class Instructions : MonoBehaviour {
 	[SerializeField]
 	GameObject InstructionMenu;
 
-	public static bool setBool;
+	bool setBool;
 
 	// Use this for initialization
 	void Start () {

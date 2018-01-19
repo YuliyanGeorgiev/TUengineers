@@ -30,8 +30,9 @@ public class PlayerController : MonoBehaviour {
 	bool carry;
 	bool run;
     private PlayerActivator respawn;
-    public AudioSource hitSound;
-    public AudioSource walk;
+	public AudioClip hitSound;
+	public AudioClip walk;
+	public AudioSource audioSource;
 
 	void Start () {
         spawnPoint = GameObject.Find("SpawnPoint");
@@ -49,8 +50,9 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () {
 
-		if(Input.GetKey(KeyCode.P)) {
-			walk.Play();
+		if(Input.GetKeyDown(KeyCode.P)) {
+			//walk.Play();
+			audioSource.PlayOneShot(walk);
 		}
 		//grounded = Physics.Raycast(transform.position + transform.up, -transform.up, 1f);
 		velocity = Vector3.zero;
@@ -68,9 +70,12 @@ public class PlayerController : MonoBehaviour {
 		}
 		if(velocity != Vector3.zero) {
 			run = true; //play run animation
-            walk.Play();
+           // walk.Play();
+			if(!audioSource.isPlaying) {
+				audioSource.PlayOneShot(walk);
+			}
 		} else {
-            walk.Stop();
+            //walk.Stop();
 			run = false; //stop run animation
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && grounded == true) {
@@ -107,7 +112,7 @@ public class PlayerController : MonoBehaviour {
     public void TakeDamage()
     {
         Debug.Log("hit");
-        hitSound.Play();
+        //hitSound.Play();
         health -= 10;
         if (health == 0)
         {

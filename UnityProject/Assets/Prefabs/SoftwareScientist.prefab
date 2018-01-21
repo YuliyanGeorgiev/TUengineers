@@ -362,8 +362,8 @@ GameObject:
   - component: {fileID: 114867550793491248}
   - component: {fileID: 114660378048476996}
   - component: {fileID: 114001638496071784}
-  - component: {fileID: 82036270746574894}
   - component: {fileID: 82117290928825278}
+  - component: {fileID: 82036270746574894}
   m_Layer: 0
   m_Name: SoftwareScientist
   m_TagString: Player
@@ -1421,7 +1421,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549344504816292}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.372822, y: 6.2, z: 2.554441}
+  m_LocalPosition: {x: -32.59356, y: 6.365, z: 0.28306574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4081817469567534}
@@ -1932,16 +1932,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d7a2b5cdab23048acad109d67d4b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHand: {fileID: 0}
-  leftHand: {fileID: 0}
+  rightHand: {fileID: 4367240516646058}
+  leftHand: {fileID: 4383981521724446}
   speed: 4
   rotSpeed: 3
   acceleration: 0.3
   jumpForce: 25
   playerCamera: {fileID: 20518019178739160}
   health: 80
-  hitSound: {fileID: 82036270746574894}
-  walk: {fileID: 82117290928825278}
+  hitSound: {fileID: 8300000, guid: d86573bfcbd85e34db41488c6638f08a, type: 3}
+  walk: {fileID: 8300000, guid: 7d36b224384f89f43adb063f75ec3196, type: 3}
+  audioSource: {fileID: 82117290928825278}
 --- !u!114 &114326316631743366
 MonoBehaviour:
   m_ObjectHideFlags: 1

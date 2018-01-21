@@ -1035,7 +1035,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530689523411028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.219143, y: 6.039, z: 2.9029946}
+  m_LocalPosition: {x: -32.23659, y: 8.4, z: 2.9373624}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4429091279047362}
@@ -1991,16 +1991,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d7a2b5cdab23048acad109d67d4b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHand: {fileID: 0}
-  leftHand: {fileID: 0}
+  rightHand: {fileID: 4147058762728192}
+  leftHand: {fileID: 4030304665109282}
   speed: 4
   rotSpeed: 3
   acceleration: 0.3
   jumpForce: 25
   playerCamera: {fileID: 20581094556784298}
   health: 80
-  hitSound: {fileID: 82939670305842390}
-  walk: {fileID: 82598383692121680}
+  hitSound: {fileID: 8300000, guid: d86573bfcbd85e34db41488c6638f08a, type: 3}
+  walk: {fileID: 8300000, guid: 7d36b224384f89f43adb063f75ec3196, type: 3}
+  audioSource: {fileID: 82939670305842390}
 --- !u!114 &114428600590919558
 MonoBehaviour:
   m_ObjectHideFlags: 1

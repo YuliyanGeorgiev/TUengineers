@@ -84,6 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4810750464445768}
   - component: {fileID: 120308543447250688}
+  - component: {fileID: 114568171184604382}
   m_Layer: 0
   m_Name: LaserPointer
   m_TagString: Untagged
@@ -195,7 +196,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1893782103616766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.020890862, y: 0.049998514, z: 0.8038064}
+  m_LocalPosition: {x: 6.178525, y: 0.049998228, z: 2.1108532}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4090608478689840}
@@ -566,6 +567,17 @@ MonoBehaviour:
     i15: 191
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &114568171184604382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412726722543834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eaefc71130d56b419cf0858db22ff80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114890178142960266
 MonoBehaviour:
   m_ObjectHideFlags: 1

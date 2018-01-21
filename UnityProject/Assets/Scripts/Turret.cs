@@ -116,7 +116,7 @@ public class Turret : NetworkBehaviour {
 
 			}
 		}
-		laser.SetPosition(1, new Vector3(0,0,hit.distance)); // Sets laser length. Too short don't know why!
+		//laser.SetPosition(1, new Vector3(0,0,hit.distance)); // Sets laser length. Too short don't know why!
 		if(Time.time > muzzleFlashTime) {
 			muzzleFlash.enabled = false;
 		}

@@ -24,6 +24,8 @@ public class ElevatorRoof : MonoBehaviour {
 					child.gameObject.AddComponent<BoxCollider>();
 					child.GetComponent<BoxCollider>().size*=0.5f;
 					child.parent = null;
+					child.gameObject.AddComponent<PickUp>();
+					child.tag = "Interactive";
 				}
 			}
 		}

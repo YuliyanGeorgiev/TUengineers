@@ -1,38 +1,39 @@
 fileFormatVersion: 2
-guid: 23a12abeaf03f724c983231887a7e0ba
-timeCreated: 1516552697
+guid: 3417614b53e7c59488a8c04b38e9f8f5
+timeCreated: 1516569189
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     100002: Cube
-    100004: Cube_001
+    100004: Window
+    100006: Cube_001
     400000: //RootNode
     400002: Cube
-    400004: Cube_001
-    2100000: Material_002
-    2100002: Material_004
-    2100004: Material_001
-    2100006: Material_005
-    2100008: Material_003
-    2100010: Material
-    2100012: Material_007
-    2100014: Material_008
-    2100016: Material_006
-    2100018: Material_009
-    2100020: Material_010
-    2300000: Cube
-    2300002: Cube_001
-    2300004: //RootNode
-    3300000: Cube
-    3300002: Cube_001
-    3300004: //RootNode
-    4300000: Cube_001
-    4300002: Cube
-    6400000: Cube
-    6400002: Cube_001
-    6400004: //RootNode
+    400004: Window
+    400006: Cube_001
+    2100000: Material_001
+    2100002: Material_003
+    2100004: Material_004
+    2100006: Material_002
+    2100008: Material_005
+    2100010: glass
+    2300000: //RootNode
+    2300002: Cube
+    2300004: Window
+    2300006: Cube_001
+    3300000: //RootNode
+    3300002: Cube
+    3300004: Window
+    3300006: Cube_001
+    4300000: Cube
+    4300002: Window
+    4300004: Cube_001
+    6400000: //RootNode
+    6400002: Cube
+    6400004: Window
+    6400006: Cube_001
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

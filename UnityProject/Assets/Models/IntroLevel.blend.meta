@@ -20,6 +20,9 @@ ModelImporter:
     400010: //RootNode
     400012: Plane
     2100000: unnamed
+    2100002: Material
+    2100004: Material_001
+    2100006: Material_002
     2300000: BezierCurve
     2300002: Cable
     2300004: Cable001

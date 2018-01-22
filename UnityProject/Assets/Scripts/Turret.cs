@@ -57,6 +57,10 @@ public class Turret : NetworkBehaviour {
             {
                 turretSound.Stop();
             }
+            if (start != null)
+            {
+                start.Stop();
+            }
             if (this.transform.tag == "Turret")
             {
                 boom.Play();
@@ -84,10 +88,6 @@ public class Turret : NetworkBehaviour {
         RaycastHit hit;
         //Vector3 forward = transform.TransformDirection(Vector3.forward) * range;
 		if(target != null && health > 0) { // so the turret rotates to the target before it checks if it can still see it. Improves tracking.
-            if (rotSpeed == 0)
-            {
-                start.Play();
-            }
 			midDirection = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z);
 			topDirection = new Vector3(target.transform.position.x - mid.transform.position.x , target.transform.position.y - laserOrigin.position.y, target.transform.position.z - mid.transform.position.z);
 		} else if(Time.time > stopSearchTime && health > 0) {
@@ -106,7 +106,11 @@ public class Turret : NetworkBehaviour {
 
 		if (Physics.Raycast(laserOrigin.position, laserOrigin.forward, out hit, range)) {
 			if(IsTarget(hit)) {
-				stopSearchTime = Time.time + searchTime;
+                if (start != null)
+                {
+                    start.Play();
+                }
+                stopSearchTime = Time.time + searchTime;
 				target = hit.transform.gameObject;
 				//targetDistance = hit.distance;
 				//Debug.Log(target);

@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && grounded == true) {
 				velocity += transform.up * jumpForce * 0.5f;
-				grounded = false; 
+				//grounded = false; 
 		}			
 
 		carry = Input.GetKey(KeyCode.Mouse0); //carry = true if mousebutton is pressed

@@ -30116,6 +30116,11 @@ Prefab:
       propertyPath: m_ReferenceResolution.y
       value: 567
       objectReference: {fileID: 0}
+    - target: {fileID: 224011318255786418, guid: 95d38626a2d43f04c9356807ea9ce20a,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 47935.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95d38626a2d43f04c9356807ea9ce20a, type: 2}
   m_IsPrefabParent: 0

@@ -1599,7 +1599,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378456030925906}
-  m_LocalRotation: {x: 0.34933022, y: 0.35384828, z: 0.5557343, w: 0.6662726}
+  m_LocalRotation: {x: 0.34933025, y: 0.3538483, z: 0.55573434, w: 0.66627264}
   m_LocalPosition: {x: -0.06613916, y: -0.000000014784746, z: -0.000000012440978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1880,7 +1880,7 @@ MonoBehaviour:
   speed: 4
   rotSpeed: 3
   acceleration: 0.3
-  jumpForce: 25
+  jumpForce: 4
   playerCamera: {fileID: 20246994245295610}
   health: 80
   hitSound: {fileID: 8300000, guid: 08205a1aa7395e14ca5386930e1728d6, type: 3}

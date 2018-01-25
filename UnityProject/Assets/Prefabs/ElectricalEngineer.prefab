@@ -1996,7 +1996,7 @@ MonoBehaviour:
   speed: 4
   rotSpeed: 3
   acceleration: 0.3
-  jumpForce: 25
+  jumpForce: 4
   playerCamera: {fileID: 20581094556784298}
   health: 80
   hitSound: {fileID: 8300000, guid: d86573bfcbd85e34db41488c6638f08a, type: 3}

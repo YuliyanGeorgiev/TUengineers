@@ -79,7 +79,8 @@ public class PlayerController : MonoBehaviour {
 			run = false; //stop run animation
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && grounded == true) {
-				velocity += transform.up * jumpForce * 0.5f;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+				//velocity += transform.up * jumpForce * 0.5f;
 				//grounded = false; 
 		}			
 

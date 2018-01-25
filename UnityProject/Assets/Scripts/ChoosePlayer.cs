@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class ChoosePlayer : NetworkBehaviour {
+public class ChoosePlayer : MonoBehaviour {
 
 	[SerializeField]
 	NetworkManager manager;
@@ -45,8 +45,6 @@ public class ChoosePlayer : NetworkBehaviour {
 	[SerializeField]
 	GameObject electricalPrefab;
 
-	public int choice;
-
 	Camera myCamera;
 	Canvas myCanvas;
 
@@ -66,20 +64,17 @@ public class ChoosePlayer : NetworkBehaviour {
 
 	//attach player prefabs here
 	void mechanicalOnClick(){
-		//manager.playerPrefab = mechanicalPrefab;
-		this.choice = 0;
+		manager.playerPrefab = mechanicalPrefab;
 		startGame();
 	}
 
 	void softwareOnClick(){
-		//manager.playerPrefab = softwarePrefab;
-		this.choice = 1;
+		manager.playerPrefab = softwarePrefab;
 		startGame ();
 	}
 
 	void electricalOnClick(){
-		//manager.playerPrefab = electricalPrefab;
-		this.choice = 2;
+		manager.playerPrefab = electricalPrefab;
 		startGame ();
 	}
 		
@@ -95,11 +90,11 @@ public class ChoosePlayer : NetworkBehaviour {
 	}
 
 	void joinTheGame(){
-		myCamera.enabled = false;
-		myCanvas.enabled = false;
 		manager.networkPort = 7777;
 		manager.networkAddress = myInput.text;
 		manager.StartClient ();
+		myCamera.enabled = false;
+		myCanvas.enabled = false;
 	}
 
 	void hostTheGame(){
@@ -111,9 +106,9 @@ public class ChoosePlayer : NetworkBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		choosePlayer.transform.Find ("SoftwareScientist").Rotate(0, Time.deltaTime*50, 0);
-		choosePlayer.transform.Find ("MechanicalEngineer").Rotate(0, Time.deltaTime*50, 0);
-		choosePlayer.transform.Find ("ElectricalEngineer").Rotate(0, Time.deltaTime*50, 0);
+		choosePlayer.transform.Find ("SoftwareScientist").Rotate(0, 1, 0);
+		choosePlayer.transform.Find ("ElectricalEngineer").Rotate(0, 1, 0);
+		choosePlayer.transform.Find ("MechanicalEngineer").Rotate(0, 1, 0);
 
 	}
 }

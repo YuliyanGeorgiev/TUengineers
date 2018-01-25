@@ -106,9 +106,9 @@ public class ChoosePlayer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		choosePlayer.transform.Find ("SoftwareScientist").Rotate(0, 1, 0);
-		choosePlayer.transform.Find ("ElectricalEngineer").Rotate(0, 1, 0);
-		choosePlayer.transform.Find ("MechanicalEngineer").Rotate(0, 1, 0);
+		choosePlayer.transform.Find ("SoftwareScientist").Rotate(0, 50*Time.deltaTime, 0);
+		choosePlayer.transform.Find ("ElectricalEngineer").Rotate(0, 50*Time.deltaTime, 0);
+		choosePlayer.transform.Find ("MechanicalEngineer").Rotate(0, 50*Time.deltaTime, 0);
 
 	}
 }

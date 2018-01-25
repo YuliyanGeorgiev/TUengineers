@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class PickUp : MonoBehaviour, IInteractiveObject
+public class PickUp : NetworkBehaviour, IInteractiveObject
 {
     // Use this for initialization
     void Start()
@@ -19,10 +19,33 @@ public class PickUp : MonoBehaviour, IInteractiveObject
 
     public void Interact(Transform player)
     {
-        transform.parent = player;
-        transform.position = player.position + player.transform.forward;
-        transform.GetComponent<Rigidbody>().isKinematic = true;
+        //transform.parent = player;
+        //transform.position = player.position + player.transform.forward;
+        //transform.GetComponent<Rigidbody>().isKinematic = true;
+		if(!isServer) {
+			CmdPickUp(player.gameObject);
+			Debug.Log("HelloClient");
+		} else {
+			RpcPickUp(player.gameObject);
+			Debug.Log("helloserver");
+		}
     }
+
+	[Command]
+	public void CmdPickUp(GameObject player) {
+		RpcPickUp(player);
+		transform.parent = player.transform;
+		transform.position = player.transform.position + player.transform.forward;
+		transform.GetComponent<Rigidbody>().isKinematic = true;
+	}
+		
+
+	[ClientRpc]
+	public void RpcPickUp(GameObject player) {
+		transform.parent = player.transform;
+		transform.position = player.transform.position + player.transform.forward;
+		transform.GetComponent<Rigidbody>().isKinematic = true;
+	}
 
     public void Release()
     {
